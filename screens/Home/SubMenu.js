@@ -1,10 +1,13 @@
 import React from "react";
-import { View, StyleSheet, ImageBackground, Image } from "react-native";
+import { View, StyleSheet, ImageBackground, Image, TouchableNativeFeedback} from "react-native";
+
+//Components
+import Touchable from "../../components/Touchable";
 
 //Controllers
 import { DefaultText, HeaderText, SmallText } from "../../controllers/TextController";
 
-const SubMenu = () => {
+const SubMenu = ({ navigation }) => {
     return (
         <View>
             <View style={styles.banner}>
@@ -16,18 +19,20 @@ const SubMenu = () => {
                 </ImageBackground>
             </View>
             <View style={styles.subMenu}>
-                <View style={styles.menuCard}>
-                    <View style={{ flex: 2 }}>
-                        <Image source={require("../../assets/images/Mae.jpeg")} style={{ height: "100%", width: "100%" }}/>
+                <Touchable onPress={() => navigation.navigate("Menu")}>
+                    <View style={styles.menuCard}>
+                        <View style={{ flex: 2 }}>
+                            <Image source={require("../../assets/images/Mae.jpeg")} style={{ height: "100%", width: "100%" }}/>
+                        </View>
+                        <View style={styles.menuText}>
+                            <DefaultText>Mae's Bakery</DefaultText>
+                            <SmallText>
+                                A local Toronto based bakery specializing in pastries and baked foods combining 
+                                French baked goods with an Asian Twist. 
+                            </SmallText>
+                        </View>
                     </View>
-                    <View style={styles.menuText}>
-                        <DefaultText>Mae's Bakery</DefaultText>
-                        <SmallText>
-                            A local Toronto based bakery specializing in pastries and baked foods combining 
-                            French baked goods with an Asian Twist. 
-                        </SmallText>
-                    </View>
-                </View>
+                </Touchable>
             </View>
         </View>
     );

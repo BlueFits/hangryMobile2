@@ -6,7 +6,14 @@ import { CardStyleInterpolators } from '@react-navigation/stack';
 //Screens
 import Home from "../../screens/Home/Home";
 import SubMenu from "../../screens/Home/SubMenu";
+import restaurantMenu from "../../screens/Home/RestaurantMenu";
 import Selection from "../../screens/Home/PreviewSelection";
+
+//Top Tabs
+import Menu from "../toptabs/MenuTopTab";
+
+//Components
+import MenuHeader from "../../components/MenuHeader";
 
 ///Init
 const Stack = createStackNavigator();
@@ -21,6 +28,11 @@ const HomeStack = () => {
                 },
                 //cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
             }}}/>
+            <Stack.Screen name="Menu" component={Menu} options={{
+                header: ({ navigation }) => {
+                    return <MenuHeader />
+                }, 
+            }}/>
         </Stack.Navigator>
     );
 };
