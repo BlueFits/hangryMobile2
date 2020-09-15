@@ -8,6 +8,7 @@ import Home from "../../screens/Home/Home";
 import SubMenu from "../../screens/Home/SubMenu";
 import restaurantMenu from "../../screens/Home/RestaurantMenu";
 import Selection from "../../screens/Home/PreviewSelection";
+import Filler from "../../screens/Filler";
 
 //Top Tabs
 import Menu from "../toptabs/MenuTopTab";
@@ -30,7 +31,7 @@ const HomeStack = () => {
             }}}/>
             <Stack.Screen name="Menu" component={Menu} options={{
                 header: ({ navigation }) => {
-                    return <MenuHeader />
+                    return <MenuHeader navigation={navigation}/>
                 }, 
             }}/>
         </Stack.Navigator>

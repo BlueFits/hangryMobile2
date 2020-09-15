@@ -6,6 +6,7 @@ const Filler = () => {
         <View style={styles.fillerStyles}>
             <Text>Will be implemented</Text>
         </View>
+
     );
 };
 
