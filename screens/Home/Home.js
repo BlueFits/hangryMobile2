@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { View, StyleSheet, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
+//Constants
+import { overlay } from "../../constants/StyleConstants";
+
 //CONTROLLERS
 import { HeaderText } from "../../controllers/TextController";
 
@@ -60,15 +63,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         width: "80%",
     },
-    overlay: {
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-        backgroundColor: 'black',
-        opacity: 0.3
-      },
+    overlay,
     mealColoumn: {
         height: 200,
         width: "100%",
