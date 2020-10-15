@@ -11,9 +11,11 @@ import NavigationController from "./navigation/NavigationController";
 
 //Reducer Imports Here
 import authReducer from "./store/reducers/auth";
+import restaurantReducer from "./store/reducers/restaurants";
 
 const rootReducer = combineReducers({
   authReducer,
+  restaurantReducer,
 });
 
 const store = createStore(rootReducer);

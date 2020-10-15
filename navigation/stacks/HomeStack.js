@@ -9,6 +9,7 @@ import SubMenu from "../../screens/Home/SubMenu";
 import restaurantMenu from "../../screens/Home/RestaurantMenu";
 import Selection from "../../screens/Home/PreviewSelection";
 import Filler from "../../screens/Filler";
+import previewSelection from "../../screens/Home/PreviewSelection";
 
 //Top Tabs
 import Menu from "../toptabs/MenuTopTab";
@@ -33,6 +34,9 @@ const HomeStack = () => {
                 header: ({ navigation }) => {
                     return <MenuHeader navigation={navigation}/>
                 }, 
+            }}/>
+            <Stack.Screen name="Preview" component={previewSelection} options={{
+                title: "",
             }}/>
         </Stack.Navigator>
     );

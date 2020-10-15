@@ -8,7 +8,7 @@ import RegularCard from "../../components/RegularCard";
 //Controllers
 import { DefaultText, HeaderText, SmallText } from "../../controllers/TextController";
 
-const RestaurantMenu = () => {
+const RestaurantMenu = ({ navigation }) => {
     return (
         <ScrollView>
             <View style={styles.screen}>
@@ -20,12 +20,14 @@ const RestaurantMenu = () => {
                         title = "French Madelaines"
                         description = "Our beautifully crafted madeleines are baked fresh daily, and coated with... strawberry crema, ready to die for."
                         price = "9.99"
+                        onPress={() => navigation.navigate("Preview")}
                     />
                     <RegularCard 
                         image = {require("../../assets/images/deserts.jpeg")}
                         title = "French Madelaines"
                         description = "Our beautifully crafted madeleines are baked fresh daily, and coated with... strawberry crema, ready to die for."
                         price = "9.99"
+                        onPress={() => navigation.navigate("Preview")}
                     />
             </View>
         </ScrollView>

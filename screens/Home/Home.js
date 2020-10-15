@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { View, StyleSheet, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard, TouchableOpacity } from "react-native";
+import { View, StyleSheet, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard, TouchableOpacity, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
 
 //Constants
 import { overlay } from "../../constants/StyleConstants";
@@ -13,35 +14,66 @@ import Touchable from "../../components/Touchable";
 
 const Home = ({ navigation }) => {
 
+    const restaurants = useSelector(state => state.restaurantReducer.allRestaurants);
+
     const [search, setSearch] = useState("");
 
-    return (
-        <TouchableWithoutFeedback touchSoundDisabled={true} onPress={() => Keyboard.dismiss()}>
-            <View style={styles.screen}>
-                <View style={styles.searchContainer}>
-                    <Ionicons name="ios-search" size={24} color="black" />
-                    <TextInput
-                        style={styles.input}
-                        value={search}
-                        onChangeText={(text) => setSearch(text)}
-                        placeholder={"Search restaurant or dish"}
-                        placeholderTextColor={"#4D4D4D"}
-                    />
+    //Local Components
+     const CardRender = ({ onPress, background, label }) => {
+        return (
+            <TouchableOpacity onPress={onPress} style={styles.mealColoumn}>
+                <View>
+                    <ImageBackground source={background} style={styles.menuBg}>
+                        <View style={styles.overlay} />
+                        <View>
+                            <HeaderText style={{ color: "#fff" }}>{label}</HeaderText>
+                        </View>  
+                    </ImageBackground>
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate("SubMenu")} style={styles.mealColoumn}>
-                    <View>
-                        <ImageBackground source={require("../../assets/images/pizza.jpg")} style={styles.menuBg}>
-                            <View style={styles.overlay} />
-                            <View>
-                                <HeaderText style={{ color: "#fff" }}>Pizza</HeaderText>
-                            </View>  
-                        </ImageBackground>
+            </TouchableOpacity>
+        );
+     };
+
+    return (
+        <ScrollView>
+            <TouchableWithoutFeedback touchSoundDisabled={true} onPress={() => Keyboard.dismiss()}>
+                <View style={styles.screen}>
+                    <View style={styles.searchContainer}>
+                        <Ionicons name="ios-search" size={24} color="black" />
+                        <TextInput
+                            style={styles.input}
+                            value={search}
+                            onChangeText={(text) => setSearch(text)}
+                            placeholder={"Search restaurant or dish"}
+                            placeholderTextColor={"#4D4D4D"}
+                        />
                     </View>
-                </TouchableOpacity>
-            </View>
-        </TouchableWithoutFeedback>
+
+                    <CardRender 
+                        onPress={() => navigation.navigate("SubMenu")}
+                        background={require("../../assets/images/pizza.jpg")}
+                        label="Pizza"
+                    />
+
+                    <CardRender 
+                        onPress={() => navigation.navigate("SubMenu")}
+                        background={require("../../assets/images/deserts.jpeg")}
+                        label="Dessert"
+                    />
+
+                    <CardRender 
+                        onPress={() => navigation.navigate("SubMenu")}
+                        background={require("../../assets/images/pizza.jpg")}
+                        label="Burgers"
+                    />
+
+                </View>
+            </TouchableWithoutFeedback>
+        </ScrollView>
     );
 };
+
+const itemMargin = 20;
 
 const styles = StyleSheet.create({
     screen: {
@@ -50,7 +82,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     searchContainer: {
-        marginBottom: 20,
+        marginBottom: itemMargin,
         flexDirection: "row",
         alignItems: "center",
         width: "100%",
@@ -67,6 +99,7 @@ const styles = StyleSheet.create({
     mealColoumn: {
         height: 200,
         width: "100%",
+        marginBottom: itemMargin,
     },
     menuBg: { 
         width: "100%", 
