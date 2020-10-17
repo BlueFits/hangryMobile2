@@ -1,5 +1,7 @@
 import React from "react";
-import { View, StyleSheet, ImageBackground, Image, TouchableNativeFeedback} from "react-native";
+import { View, StyleSheet, ImageBackground, ScrollView} from "react-native";
+import { useSelector, useDispatch } from "react-redux";
+import { setMenu } from "../../store/actions/restaurants"
 
 //Components
 import Touchable from "../../components/Touchable";
@@ -8,26 +10,46 @@ import RegularCard from "../../components/RegularCard";
 //Controllers
 import { DefaultText, HeaderText, SmallText } from "../../controllers/TextController";
 
-const SubMenu = ({ navigation }) => {
+const SubMenu = ({ navigation, route }) => {
+
+    const dispatch = useDispatch();
+
+    let restaurants = useSelector(state => state.restaurantReducer.allRestaurants).filter(restaurant => restaurant.category === route.params.category);
+
+    //Methods
+
+    const pressHandler = (restaurant) => {
+        dispatch(setMenu(restaurant._id));
+        navigation.navigate("Menu", { 
+            restaurant,
+         });
+    };
+
     return (
-        <View>
+        <ScrollView>
             <View style={styles.banner}>
                 <ImageBackground source={require("../../assets/images/deserts.jpeg")} style={styles.menuBg}>
                         <View style={styles.overlay} />
                         <View>
-                            <HeaderText style={{ color: "#fff" }}>Dessert</HeaderText>
+                            <HeaderText style={{ color: "#fff" }}>{route.params.category}</HeaderText>
                         </View>  
                 </ImageBackground>
             </View>
+
             <View style={styles.subMenu}>
-                <RegularCard
-                    onPress = {() => navigation.navigate("Menu")}
-                    image = {require("../../assets/images/Mae.jpeg")}
-                    title="Mae's Bakery"
-                    description = "A local Toronto based bakery specializing in pastries and baked foods combining French baked goods with an Asian Twist."
-                />
+                {restaurants.map((restaurant, index) => {
+                    return (
+                        <RegularCard
+                            key={"subMenuKey"+index}
+                            onPress = {pressHandler.bind(this, restaurant)}
+                            image = {{ uri: restaurant.picture }}
+                            title={restaurant.name}
+                            description={restaurant.website}
+                        />
+                    );
+                })}
             </View>
-        </View>
+        </ScrollView>
     );
 };
 

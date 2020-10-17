@@ -30,10 +30,12 @@ const HomeStack = () => {
                 },
                 //cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
             }}}/>
-            <Stack.Screen name="Menu" component={Menu} options={{
-                header: ({ navigation }) => {
-                    return <MenuHeader navigation={navigation}/>
-                }, 
+            <Stack.Screen name="Menu" component={Menu} options={({ route, navigation }) => {
+                return ({
+                    header: () => {
+                        return <MenuHeader navigation={navigation} restaurant={route.params.restaurant} />
+                    }, 
+                });
             }}/>
             <Stack.Screen name="Preview" component={previewSelection} options={{
                 title: "",

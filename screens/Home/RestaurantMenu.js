@@ -1,34 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet, ScrollView, Image } from "react-native";
+import { useSelector } from "react-redux";
 
 //Components
 import SpecialCard from "../../components/SpecialCard";
 import RegularCard from "../../components/RegularCard";
+import MenuHeader from "../../components/MenuHeader";
 
 //Controllers
 import { DefaultText, HeaderText, SmallText } from "../../controllers/TextController";
 
 const RestaurantMenu = ({ navigation }) => {
+
+    const menu = useSelector(state => state.restaurantReducer.selectedMenu);
+
     return (
         <ScrollView>
             <View style={styles.screen}>
                     <SpecialCard 
                         backgroundImage = {require("../../assets/images/deserts.jpeg")}
                     />
-                    <RegularCard 
-                        image = {require("../../assets/images/deserts.jpeg")}
-                        title = "French Madelaines"
-                        description = "Our beautifully crafted madeleines are baked fresh daily, and coated with... strawberry crema, ready to die for."
-                        price = "9.99"
-                        onPress={() => navigation.navigate("Preview")}
-                    />
-                    <RegularCard 
-                        image = {require("../../assets/images/deserts.jpeg")}
-                        title = "French Madelaines"
-                        description = "Our beautifully crafted madeleines are baked fresh daily, and coated with... strawberry crema, ready to die for."
-                        price = "9.99"
-                        onPress={() => navigation.navigate("Preview")}
-                    />
+                    {menu.mains.map((item, index) => {
+                        return (
+                            <RegularCard 
+                                key={"menuKey"+index}
+                                image = {require("../../assets/images/deserts.jpeg")}
+                                title = {item.name}
+                                description = {item.description}
+                                price = {item.price.toString()}
+                                onPress={() => navigation.navigate("Preview")}
+                            />
+                        );
+                    })}
             </View>
         </ScrollView>
     );

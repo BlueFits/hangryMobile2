@@ -12,10 +12,10 @@ import { DefaultText, HeaderText, SmallText } from "../controllers/TextControlle
 import { overlay } from "../constants/StyleConstants";
 import Colors from "../constants/Colors";
 
-const MenuHeader = ({ navigation }) => {
+const MenuHeader = ({ navigation, restaurant }) => {
     return (
         <View style={styles.screen}>
-            <ImageBackground source={require("../assets/images/Mae.jpeg")} style={{ width: "100%", height: "100%" }}>
+            <ImageBackground source={{ uri: restaurant.picture }} style={{ width: "100%", height: "100%" }}>
                             <View style={styles.overlay} />
                             <View style={styles.headerTop}>
                                 <TouchableWithoutFeedback onPress={() => navigation.navigate("Home")}>
@@ -29,10 +29,10 @@ const MenuHeader = ({ navigation }) => {
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.container}>
-                                <HeaderText style={styles.text}>Pizza</HeaderText>
+                                <HeaderText style={styles.text}>{restaurant.name}</HeaderText>
                                 <View style={styles.middleTextContainer}>
-                                    <SmallText style={styles.text}>15 Steeles Ave. E, M154G7, Toronto ON</SmallText>
-                                    <SmallText style={styles.text}>4.4 <Entypo name="star" size={16} color="white" /> 50 reviews</SmallText>
+                                    <SmallText style={styles.text}>{restaurant.address}</SmallText>
+                                    {/* <SmallText style={styles.text}>4.4 <Entypo name="star" size={16} color="white" /> 50 reviews</SmallText> */}
                                 </View>  
                                 <Button title="Check-In!" color={Colors.primary}/>
                             </View>

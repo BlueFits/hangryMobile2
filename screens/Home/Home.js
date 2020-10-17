@@ -50,21 +50,33 @@ const Home = ({ navigation }) => {
                     </View>
 
                     <CardRender 
-                        onPress={() => navigation.navigate("SubMenu")}
+                        onPress={() => navigation.navigate("SubMenu", { category: "pizza" })}
                         background={require("../../assets/images/pizza.jpg")}
                         label="Pizza"
                     />
 
                     <CardRender 
-                        onPress={() => navigation.navigate("SubMenu")}
+                        onPress={() => navigation.navigate("SubMenu", { category: "dessert" })}
                         background={require("../../assets/images/deserts.jpeg")}
                         label="Dessert"
                     />
 
                     <CardRender 
-                        onPress={() => navigation.navigate("SubMenu")}
+                        onPress={() => navigation.navigate("SubMenu", { category: "burger" })}
                         background={require("../../assets/images/pizza.jpg")}
-                        label="Burgers"
+                        label="Burger"
+                    />
+
+                    <CardRender 
+                        onPress={() => navigation.navigate("SubMenu", { category: "japanese" })}
+                        background={require("../../assets/images/pizza.jpg")}
+                        label="Japanese"
+                    />
+
+                    <CardRender 
+                        onPress={() => navigation.navigate("SubMenu"), { category: "drinks" }}
+                        background={require("../../assets/images/pizza.jpg")}
+                        label="Drinks"
                     />
 
                 </View>
