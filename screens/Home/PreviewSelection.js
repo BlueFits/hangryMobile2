@@ -6,17 +6,17 @@ import { LinearGradient } from "expo-linear-gradient";
 import { DefaultText, HeaderText } from "../../controllers/TextController";
 import { overlay } from "../../constants/StyleConstants";
 
-const PreviewSelection = () => {
+const PreviewSelection = ({ route }) => {
     return (
         <View style={styles.default}>
-            <ImageBackground source={require("../../assets/images/pizza.jpg")} style={styles.bgImg}>
+            <ImageBackground source={{ uri: route.params.image }} style={styles.bgImg}>
                 <LinearGradient         
                     colors={['transparent', 'rgba(0,0,0,0.8)']}
                     style={styles.textContainer}
                     start={[0, 0.8]}
                 >
-                    <HeaderText style={{ color: "#fff" }}>Pizza</HeaderText>
-                    <DefaultText style={{ color: "#fff" }}>Beautifully crated pizza.</DefaultText>
+                    <HeaderText style={{ color: "#fff" }}>{route.params.name}</HeaderText>
+                    <DefaultText style={{ color: "#fff" }}>{route.params.shortDescription}</DefaultText>
                 </LinearGradient>
             </ImageBackground>
         </View>

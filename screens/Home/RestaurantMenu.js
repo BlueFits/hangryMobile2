@@ -1,14 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, ScrollView, Image } from "react-native";
 import { useSelector } from "react-redux";
 
 //Components
 import SpecialCard from "../../components/SpecialCard";
 import RegularCard from "../../components/RegularCard";
-import MenuHeader from "../../components/MenuHeader";
-
-//Controllers
-import { DefaultText, HeaderText, SmallText } from "../../controllers/TextController";
 
 const RestaurantMenu = ({ navigation }) => {
 
@@ -17,18 +13,37 @@ const RestaurantMenu = ({ navigation }) => {
     return (
         <ScrollView>
             <View style={styles.screen}>
-                    <SpecialCard 
-                        backgroundImage = {require("../../assets/images/deserts.jpeg")}
-                    />
-                    {menu.mains.map((item, index) => {
+                    {menu.map((item, index) => {
+                        if (item.isSpecial) {
+                            return (
+                                <SpecialCard 
+                                    key={"specialCardKey"+index}
+                                    title={item.name}
+                                    shortDescription={item.shortDescription}
+                                    price={item.price}
+                                    backgroundImage = {{ uri: item.image }}
+                                    onPress={() => navigation.navigate("Preview", {
+                                        image: item.image,
+                                        name: item.name,
+                                        shortDescription: item.shortDescription,
+                                    })}
+                                />                           
+                            );
+                        }
+                    })}
+                    {menu.map((item, index) => {
                         return (
                             <RegularCard 
                                 key={"menuKey"+index}
-                                image = {require("../../assets/images/deserts.jpeg")}
+                                image = {{ uri: item.image }}
                                 title = {item.name}
                                 description = {item.description}
                                 price = {item.price.toString()}
-                                onPress={() => navigation.navigate("Preview")}
+                                onPress={() => navigation.navigate("Preview", {
+                                    image: item.image,
+                                    name: item.name,
+                                    shortDescription: item.shortDescription,
+                                })}
                             />
                         );
                     })}
@@ -40,6 +55,7 @@ const RestaurantMenu = ({ navigation }) => {
 const styles = StyleSheet.create({
     screen: {
         paddingHorizontal: 15,
+        paddingVertical: 7.5,
     },
     menuCard: {
         height: 150,

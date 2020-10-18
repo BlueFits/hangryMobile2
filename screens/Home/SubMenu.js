@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, ImageBackground, ScrollView} from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import { setMenu } from "../../store/actions/restaurants"
+import { setRestaurant } from "../../store/actions/restaurants"
 
 //Components
 import Touchable from "../../components/Touchable";
@@ -19,7 +19,8 @@ const SubMenu = ({ navigation, route }) => {
     //Methods
 
     const pressHandler = (restaurant) => {
-        dispatch(setMenu(restaurant._id));
+        // dispatch(setMenu(restaurant._id));
+        dispatch(setRestaurant(restaurant._id));
         navigation.navigate("Menu", { 
             restaurant,
          });

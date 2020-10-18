@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ImageBackground, StyleSheet } from "react-native";
+import { View, ImageBackground, StyleSheet, TouchableOpacity } from "react-native";
 
 //Controllers
 import { DefaultText, SmallText, HeaderText } from "../controllers/TextController";
@@ -7,24 +7,26 @@ import { DefaultText, SmallText, HeaderText } from "../controllers/TextControlle
 //Constants
 import { overlay } from "../constants/StyleConstants";
 
-const SpecialCard = ({ backgroundImage }) => {
+const SpecialCard = ({ backgroundImage, title, shortDescription, price, onPress }) => {
 
     return (
-        <ImageBackground source={backgroundImage} style={styles.menuBg}>
-            <View style={styles.overlay} />
-            <View style={ styles.specialHeader }>
-                <View style={styles.flag}>
-                    <SmallText style={{ color: "#fff", }}>Featured Main</SmallText>
+        <TouchableOpacity onPress={onPress}>
+            <ImageBackground source={backgroundImage} style={styles.menuBg}>
+                <View style={styles.overlay} />
+                <View style={ styles.specialHeader }>
+                    <View style={styles.flag}>
+                        <SmallText style={{ color: "#fff", }}>Featured Main</SmallText>
+                    </View>
                 </View>
-            </View>
-            <View style={ styles.specialBottom } >
-                <HeaderText style={{ color: "#fff" }}>Pizza</HeaderText>
-                <View style={ { flexDirection: "row", justifyContent: "space-between" } }>
-                    <DefaultText style={{ color:"#fff" }}>Delicious cream filled pastry.</DefaultText>
-                    <DefaultText style={{ color:"#fff" }}>$12.99</DefaultText>
-                </View>
-            </View>  
-        </ImageBackground>
+                <View style={ styles.specialBottom } >
+                    <HeaderText style={{ color: "#fff" }}>{title}</HeaderText>
+                    <View style={ { flexDirection: "row", justifyContent: "space-between" } }>
+                        <DefaultText style={{ color:"#fff" }}>{shortDescription}</DefaultText>
+                        <DefaultText style={{ color:"#fff" }}>{price}</DefaultText>
+                    </View>
+                </View>  
+            </ImageBackground>
+        </TouchableOpacity>
     );
 };
 
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center", 
         paddingVertical: 10,
-        marginVertical: 15,
+        marginVertical: 7.5,
     },
     flag: {
         borderTopRightRadius: 4,

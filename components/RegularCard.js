@@ -1,11 +1,10 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { DefaultText, SmallText } from "../controllers/TextController";
-import Touchable from "../components/Touchable";
 
 const RegularCard = ({ onPress, image, title, description, price }) => {
     return(
-        <Touchable onPress={onPress}>
+        <TouchableOpacity onPress={onPress}>
             <View style={styles.menuCard}>
                 <View style={{ flex: 2 }}>
                     <Image source={image} style={{ height: "100%", width: "100%" }}/>
@@ -16,13 +15,13 @@ const RegularCard = ({ onPress, image, title, description, price }) => {
                     <DefaultText>{ price ? `$${price}` : "" }</DefaultText>
                 </View>
             </View>
-        </Touchable>
+        </TouchableOpacity>
     );
 };
 
 const styles = StyleSheet.create({
     menuCard: {
-        marginBottom: 15,
+        marginVertical: 7.5,
         height: 150,
         flexDirection: "row",
         padding: 10,
