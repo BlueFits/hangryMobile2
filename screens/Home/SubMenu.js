@@ -4,11 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { setRestaurant, clearRestaurants } from "../../store/actions/restaurants"
 
 //Components
-import Touchable from "../../components/Touchable";
 import RegularCard from "../../components/RegularCard";
 
 //Controllers
-import { HeaderText } from "../../controllers/TextController";
+import { HeaderText, DefaultText } from "../../controllers/TextController";
 
 const SubMenu = ({ navigation, route }) => {
 
@@ -31,6 +30,20 @@ const SubMenu = ({ navigation, route }) => {
         navigation.navigate("Menu");
     };
 
+    const renderCards = () => {
+        return restaurants.map((restaurant, index) => {
+            return (
+                <RegularCard
+                    key={"subMenuKey"+index}
+                    onPress = {pressHandler.bind(this, restaurant)}
+                    image = {{ uri: restaurant.imageUrl }}
+                    title={restaurant.name}
+                    description={restaurant.shortDescription}
+                />
+            );
+        })
+    }
+
     return (
         <ScrollView>
             <View style={styles.banner}>
@@ -43,17 +56,7 @@ const SubMenu = ({ navigation, route }) => {
             </View>
 
             <View style={styles.subMenu}>
-                {restaurants.map((restaurant, index) => {
-                    return (
-                        <RegularCard
-                            key={"subMenuKey"+index}
-                            onPress = {pressHandler.bind(this, restaurant)}
-                            image = {{ uri: restaurant.imageUrl }}
-                            title={restaurant.name}
-                            description={restaurant.shortDescription}
-                        />
-                    );
-                })}
+                {restaurants.length === 0 ? <View style={{ paddingVertical: 20 }}><DefaultText>No restaurants found</DefaultText></View> : renderCards()}
             </View>
         </ScrollView>
     );
@@ -84,6 +87,7 @@ const styles = StyleSheet.create({
     },
     subMenu: {
         padding: 15,
+        alignItems: "center",
     },
     menuCard: {
         height: 150,

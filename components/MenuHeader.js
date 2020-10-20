@@ -46,7 +46,7 @@ const MenuHeader = ({ navigation }) => {
                                     <SmallText style={styles.text}>{restaurant.address}</SmallText>
                                     {/* <SmallText style={styles.text}>4.4 <Entypo name="star" size={16} color="white" /> 50 reviews</SmallText> */}
                                 </View>  
-                                <Button title="Check-In!" color={Colors.primary}/>
+                                {/* <Button title="Check-In!" color={Colors.primary}/> */}
                             </View>
             </ImageBackground>
         </View>
@@ -60,6 +60,9 @@ const styles = StyleSheet.create({
     container: { 
         flex: 1, 
         alignItems: "center",
+        justifyContent: "center",
+        // borderWidth: 1,
+        // borderColor: "blue"
     },
     overlay,
     headerContainer: { 

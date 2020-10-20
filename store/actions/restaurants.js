@@ -1,4 +1,5 @@
-import PRODUCTS from "../../data/dummy-data";
+// import PRODUCTS from "../../data/dummy-data";
+import Server from "../../config/Server";
 
 
 export const SET_RESTAURANT = "SET_RESTAURANT";
@@ -13,7 +14,7 @@ export const clearRestaurants = () => {
 export const setRestaurant = (restaurantId) => {
     try {
         return async (dispatch) =>{
-            const res = await fetch("http://192.168.2.252:5000/fetch_single_restaurant", {
+            const res = await fetch(Server + "/fetch_single_restaurant", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,7 +57,10 @@ export const filterCategory = (restaurantCategory) => {
             });
             if (!response.ok) {
                 const errResData = await response.json();
-                throw new Error(errResData.error);
+                dispatch({
+                    type:FILTER_CATEGORY,
+                    restaurants: [],
+                });
             } else {
                 const resData = await response.json();
                 dispatch({

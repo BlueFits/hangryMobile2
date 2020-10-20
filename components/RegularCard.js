@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     menuCard: {
         marginVertical: 7.5,
         height: 150,
+        width: "100%",
         flexDirection: "row",
         padding: 10,
         backgroundColor: "#fff",
