@@ -1,6 +1,7 @@
 import React from "react";
-import { View, StyleSheet, ImageBackground, Button, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
+import { View, StyleSheet, ImageBackground, Button, TouchableOpacity, TouchableWithoutFeedback, ActivityIndicator } from "react-native";
 import { AntDesign, Entypo } from '@expo/vector-icons'; 
+import { useSelector } from "react-redux";
 
 //Components
 import Touchable from "../components/Touchable"
@@ -12,10 +13,21 @@ import { DefaultText, HeaderText, SmallText } from "../controllers/TextControlle
 import { overlay } from "../constants/StyleConstants";
 import Colors from "../constants/Colors";
 
-const MenuHeader = ({ navigation, restaurant }) => {
+const MenuHeader = ({ navigation }) => {
+
+    const restaurant = useSelector(state => state.restaurantReducer.selectedRestaurant);
+
+    if (!restaurant) {
+        return (
+            <View style={{ flex: 1, justifyContent: "center" }}>
+                <ActivityIndicator size={28} color={Colors.primary}/>
+            </View>
+        );
+    }
+
     return (
         <View style={styles.screen}>
-            <ImageBackground source={{ uri: restaurant.picture }} style={{ width: "100%", height: "100%" }}>
+            <ImageBackground source={{ uri: restaurant.imageUrl }} style={{ width: "100%", height: "100%" }}>
                             <View style={styles.overlay} />
                             <View style={styles.headerTop}>
                                 <TouchableWithoutFeedback onPress={() => navigation.navigate("Home")}>

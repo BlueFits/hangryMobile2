@@ -1,29 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet, ImageBackground, ScrollView} from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import { setRestaurant } from "../../store/actions/restaurants"
+import { setRestaurant, clearRestaurants } from "../../store/actions/restaurants"
 
 //Components
 import Touchable from "../../components/Touchable";
 import RegularCard from "../../components/RegularCard";
 
 //Controllers
-import { DefaultText, HeaderText, SmallText } from "../../controllers/TextController";
+import { HeaderText } from "../../controllers/TextController";
 
 const SubMenu = ({ navigation, route }) => {
 
     const dispatch = useDispatch();
 
-    let restaurants = useSelector(state => state.restaurantReducer.allRestaurants).filter(restaurant => restaurant.category === route.params.category);
+    let restaurants = useSelector(state => state.restaurantReducer.allRestaurants);
+
+    useEffect(() => {
+        const leaveScreen = navigation.addListener("blur", () => {
+            dispatch(clearRestaurants());
+        });
+
+        return leaveScreen
+    }, [navigation]);
 
     //Methods
 
     const pressHandler = (restaurant) => {
-        // dispatch(setMenu(restaurant._id));
         dispatch(setRestaurant(restaurant._id));
-        navigation.navigate("Menu", { 
-            restaurant,
-         });
+        navigation.navigate("Menu");
     };
 
     return (
@@ -43,9 +48,9 @@ const SubMenu = ({ navigation, route }) => {
                         <RegularCard
                             key={"subMenuKey"+index}
                             onPress = {pressHandler.bind(this, restaurant)}
-                            image = {{ uri: restaurant.picture }}
+                            image = {{ uri: restaurant.imageUrl }}
                             title={restaurant.name}
-                            description={restaurant.website}
+                            description={restaurant.shortDescription}
                         />
                     );
                 })}

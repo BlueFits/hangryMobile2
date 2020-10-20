@@ -1,6 +1,6 @@
 import PRODUCTS from "../../data/dummy-data";
 
-import { SET_RESTAURANT, SWITCH_CATEGORY } from "../actions/restaurants";
+import { SET_RESTAURANT, SWITCH_CATEGORY, FILTER_CATEGORY, CLEAR_RESTAURANTS } from "../actions/restaurants";
 
 const initialState = {
     allRestaurants: PRODUCTS,
@@ -10,6 +10,10 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch(action.type) {
+        case CLEAR_RESTAURANTS:
+            return { ...state, allRestaurants: [] }
+        case FILTER_CATEGORY:
+            return {...state, allRestaurants: action.restaurants};
         case SET_RESTAURANT:
             return { ...state, selectedRestaurant: action.restaurant, selectedMenu: action.restaurant.menu.mains };
         case SWITCH_CATEGORY:

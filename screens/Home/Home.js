@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { View, StyleSheet, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard, TouchableOpacity, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
+//Action Redux
+import { filterCategory } from "../../store/actions/restaurants"
 
 //Constants
 import { overlay } from "../../constants/StyleConstants";
@@ -9,14 +12,17 @@ import { overlay } from "../../constants/StyleConstants";
 //CONTROLLERS
 import { HeaderText } from "../../controllers/TextController";
 
-//COMPONENTS
-import Touchable from "../../components/Touchable";
 
 const Home = ({ navigation }) => {
-
-    const restaurants = useSelector(state => state.restaurantReducer.allRestaurants);
+    const dispatch = useDispatch();
 
     const [search, setSearch] = useState("");
+
+    //Methods
+    const onPressHandler = (category) => {
+        dispatch(filterCategory(category));
+        navigation.navigate("SubMenu", { category });
+    }
 
     //Local Components
      const CardRender = ({ onPress, background, label }) => {
@@ -50,31 +56,31 @@ const Home = ({ navigation }) => {
                     </View>
 
                     <CardRender 
-                        onPress={() => navigation.navigate("SubMenu", { category: "pizza" })}
+                        onPress={onPressHandler.bind(this, "pizza")}
                         background={require("../../assets/images/pizza.jpg")}
                         label="Pizza"
                     />
 
                     <CardRender 
-                        onPress={() => navigation.navigate("SubMenu", { category: "dessert" })}
+                        onPress={onPressHandler.bind(this, "dessert")}
                         background={require("../../assets/images/deserts.jpeg")}
                         label="Dessert"
                     />
 
                     <CardRender 
-                        onPress={() => navigation.navigate("SubMenu", { category: "burger" })}
+                        onPress={onPressHandler.bind(this, "burger")}
                         background={require("../../assets/images/pizza.jpg")}
                         label="Burger"
                     />
 
                     <CardRender 
-                        onPress={() => navigation.navigate("SubMenu", { category: "japanese" })}
+                        onPress={onPressHandler.bind(this, "japanese")}
                         background={require("../../assets/images/pizza.jpg")}
                         label="Japanese"
                     />
 
                     <CardRender 
-                        onPress={() => navigation.navigate("SubMenu"), { category: "drinks" }}
+                        onPress={onPressHandler.bind(this, "drinks")}
                         background={require("../../assets/images/pizza.jpg")}
                         label="Drinks"
                     />

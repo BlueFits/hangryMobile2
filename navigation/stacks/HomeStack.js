@@ -33,7 +33,7 @@ const HomeStack = () => {
             <Stack.Screen name="Menu" component={Menu} options={({ route, navigation }) => {
                 return ({
                     header: () => {
-                        return <MenuHeader navigation={navigation} restaurant={route.params.restaurant} />
+                        return <MenuHeader navigation={navigation}/>
                     }, 
                 });
             }}/>

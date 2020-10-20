@@ -9,12 +9,12 @@ import Colors from "../constants/Colors";
 
 //Screens
 import Filler from "../screens/Filler";
+import Qr from "../screens/Qr/qr";
 
 //Stacks
 import HomeStack from "./stacks/HomeStack";
 
 //Initialized Variables
-// const Tab = createBottomTabNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const NavigationController = () => {
@@ -32,7 +32,7 @@ const NavigationController = () => {
                     );
                    }, 
                 }} />
-                <Tab.Screen name="Qr" component={Filler} options={{
+                <Tab.Screen name="Qr" component={Qr} options={{
                     tabBarIcon: (tabInfo) => <Ionicons name="ios-qr-scanner" size={24} color={tabInfo.color} />
                 }} />
                 <Tab.Screen name="Account" component={Filler} options={{
