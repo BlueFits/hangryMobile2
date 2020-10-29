@@ -46,7 +46,7 @@ export const switchCategory = (category) => {
 export const filterCategory = (restaurantCategory) => {
     try {
         return async (dispatch) => {
-            const response = await fetch("http://192.168.2.252:5000/fetch_restaurants", {
+            const response = await fetch(Server + "/fetch_restaurants", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

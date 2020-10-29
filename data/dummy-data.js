@@ -7,8 +7,8 @@ import itemImageA from '../assets/images/deserts.jpeg'
 const RESTAURANTS = [
     new Restaurant(
         "1",
-        "DummyTaurant",
-        "test addy 1",
+        "Loading",
+        "",
         "111-111-1111",
         "https://i.imgur.com/CUG0Aof.jpg",
         "instagram/someting",

@@ -4,8 +4,8 @@ import { SET_RESTAURANT, SWITCH_CATEGORY, FILTER_CATEGORY, CLEAR_RESTAURANTS } f
 
 const initialState = {
     allRestaurants: PRODUCTS,
-    selectedRestaurant: null,
-    selectedMenu: null,
+    selectedRestaurant: PRODUCTS[0],
+    selectedMenu: PRODUCTS[0].mains,
 };
 
 export default (state = initialState, action) => {
