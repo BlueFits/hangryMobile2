@@ -3,4 +3,4 @@ const Server = {
     production: "https://hangry-backend.herokuapp.com"
 };
 
-export default Server.production;
+export default Server.development;

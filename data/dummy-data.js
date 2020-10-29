@@ -70,26 +70,6 @@ const RESTAURANTS = [
             ],
         ),
     ),
-    new Restaurant(
-        "2",
-        "DummyTaurant2",
-        "test addy 2",
-        "111-111-1111",
-        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-        "instagram.com/somewhere",
-        "www.test2.com",
-        "dessert"
-    ),
-    new Restaurant(
-        "3",
-        "DummyTaurant3",
-        "test addy 2",
-        "111-111-1111",
-        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-        "instagram.com/somewhere",
-        "www.test2.com",
-        "dessert"
-    ),
 ];
 
 export default RESTAURANTS;

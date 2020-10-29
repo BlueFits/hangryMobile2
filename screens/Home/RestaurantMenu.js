@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import { View, StyleSheet, ScrollView, Image, ActivityIndicator } from "react-native";
 import { useSelector } from "react-redux";
 
+//Controllers
+import { TitleFormat, FirstLetterUppercase } from "../../controllers/FormatController";
+
 //Constants
 import Colors from "../../constants/Colors";
 
 //Components
 import SpecialCard from "../../components/SpecialCard";
 import RegularCard from "../../components/RegularCard";
+import CardNoImage from "../../components/CardNoImage";
 
 const RestaurantMenu = ({ navigation }) => {
 
@@ -29,8 +33,8 @@ const RestaurantMenu = ({ navigation }) => {
                             return (
                                 <SpecialCard 
                                     key={"specialCardKey"+index}
-                                    title={item.name}
-                                    shortDescription={item.shortDescription}
+                                    title={TitleFormat(item.name)}
+                                    shortDescription={FirstLetterUppercase(item.shortDescription)}
                                     price={item.price}
                                     backgroundImage = {{ uri: item.imageUrl }}
                                     onPress={() => navigation.navigate("Preview", {
@@ -43,20 +47,32 @@ const RestaurantMenu = ({ navigation }) => {
                         }
                     })}
                     {menu.map((item, index) => {
-                        return (
-                            <RegularCard 
-                                key={"menuKey"+index}
-                                image = {{ uri: item.imageUrl }}
-                                title = {item.name}
-                                description = {item.description}
-                                price = {item.price.toString()}
-                                onPress={() => navigation.navigate("Preview", {
-                                    image: item.imageUrl,
-                                    name: item.name,
-                                    shortDescription: item.shortDescription,
-                                })}
-                            />
-                        );
+                        if (item.imageUrl === "none" || !item.imageUrl) {
+                            return (
+                                <CardNoImage 
+                                    key={"menuKey"+index}
+                                    title = {TitleFormat(item.name)}
+                                    description = {FirstLetterUppercase(item.description)}
+                                    price = {item.price.toString()}
+
+                                />
+                            );
+                        } else {
+                            return (
+                                <RegularCard 
+                                    key={"menuKey"+index}
+                                    image = {{ uri: item.imageUrl }}
+                                    title = {TitleFormat(item.name)}
+                                    description = {FirstLetterUppercase(item.description)}
+                                    price = {item.price.toString()}
+                                    onPress={() => navigation.navigate("Preview", {
+                                        image: item.imageUrl,
+                                        name: item.name,
+                                        shortDescription: item.shortDescription,
+                                    })}
+                                />
+                            );
+                        }
                     })}
             </View>
         </ScrollView>

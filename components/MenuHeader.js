@@ -8,6 +8,7 @@ import Touchable from "../components/Touchable"
 
 //Controllers
 import { DefaultText, HeaderText, SmallText } from "../controllers/TextController";
+import { TitleFormat } from "../controllers/FormatController";
 
 //Consants
 import { overlay } from "../constants/StyleConstants";
@@ -43,7 +44,7 @@ const MenuHeader = ({ navigation }) => {
                             <View style={styles.container}>
                                 <HeaderText style={styles.text}>{restaurant.name}</HeaderText>
                                 <View style={styles.middleTextContainer}>
-                                    <SmallText style={styles.text}>{restaurant.address}</SmallText>
+                                    <SmallText style={styles.text}>{TitleFormat(restaurant.address)}</SmallText>
                                     {/* <SmallText style={styles.text}>4.4 <Entypo name="star" size={16} color="white" /> 50 reviews</SmallText> */}
                                 </View>  
                                 {/* <Button title="Check-In!" color={Colors.primary}/> */}

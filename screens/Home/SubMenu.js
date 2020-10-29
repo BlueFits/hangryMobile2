@@ -8,6 +8,7 @@ import RegularCard from "../../components/RegularCard";
 
 //Controllers
 import { HeaderText, DefaultText } from "../../controllers/TextController";
+import { TitleFormat, FirstLetterUppercase } from "../../controllers/FormatController"
 
 const SubMenu = ({ navigation, route }) => {
 
@@ -37,8 +38,8 @@ const SubMenu = ({ navigation, route }) => {
                     key={"subMenuKey"+index}
                     onPress = {pressHandler.bind(this, restaurant)}
                     image = {{ uri: restaurant.imageUrl }}
-                    title={restaurant.name}
-                    description={restaurant.shortDescription}
+                    title={TitleFormat(restaurant.name)}
+                    description={FirstLetterUppercase(restaurant.shortDescription)}
                 />
             );
         })
@@ -50,7 +51,7 @@ const SubMenu = ({ navigation, route }) => {
                 <ImageBackground source={require("../../assets/images/deserts.jpeg")} style={styles.menuBg}>
                         <View style={styles.overlay} />
                         <View>
-                            <HeaderText style={{ color: "#fff" }}>{route.params.category}</HeaderText>
+                            <HeaderText style={{ color: "#fff" }}>{TitleFormat(route.params.category)}</HeaderText>
                         </View>  
                 </ImageBackground>
             </View>
