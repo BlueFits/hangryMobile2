@@ -19,9 +19,9 @@ const Home = ({ navigation }) => {
     const [search, setSearch] = useState("");
 
     //Methods
-    const onPressHandler = (category) => {
+    const onPressHandler = (category, backgroundUri) => {
         dispatch(filterCategory(category));
-        navigation.navigate("SubMenu", { category });
+        navigation.navigate("SubMenu", { category, backgroundUri });
     }
 
     //Local Components
@@ -29,7 +29,7 @@ const Home = ({ navigation }) => {
         return (
             <TouchableOpacity onPress={onPress} style={styles.mealColoumn}>
                 <View>
-                    <ImageBackground source={background} style={styles.menuBg}>
+                    <ImageBackground source={{ uri: background }} style={styles.menuBg}>
                         <View style={styles.overlay} />
                         <View>
                             <HeaderText style={{ color: "#fff" }}>{label}</HeaderText>
@@ -56,32 +56,32 @@ const Home = ({ navigation }) => {
                     </View>
 
                     <CardRender 
-                        onPress={onPressHandler.bind(this, "pizza")}
-                        background={require("../../assets/images/pizza.jpg")}
+                        onPress={onPressHandler.bind(this, "pizza", "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80")}
+                        background={"https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"}
                         label="Pizza"
                     />
 
                     <CardRender 
-                        onPress={onPressHandler.bind(this, "dessert")}
-                        background={require("../../assets/images/deserts.jpeg")}
+                        onPress={onPressHandler.bind(this, "dessert", "https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80")}
+                        background={"https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80"}
                         label="Dessert"
                     />
 
                     <CardRender 
-                        onPress={onPressHandler.bind(this, "burger")}
-                        background={require("../../assets/images/pizza.jpg")}
+                        onPress={onPressHandler.bind(this, "burger", "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80")}
+                        background={"https://images.unsplash.com/photo-1551782450-a2132b4ba21d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"}
                         label="Burger"
                     />
 
                     <CardRender 
-                        onPress={onPressHandler.bind(this, "japanese")}
-                        background={require("../../assets/images/pizza.jpg")}
+                        onPress={onPressHandler.bind(this, "japanese", "https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=625&q=80")}
+                        background={"https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=625&q=80"}
                         label="Japanese"
                     />
 
                     <CardRender 
-                        onPress={onPressHandler.bind(this, "drinks")}
-                        background={require("../../assets/images/pizza.jpg")}
+                        onPress={onPressHandler.bind(this, "drinks", "https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-1.2.1&auto=format&fit=crop&w=825&q=80")}
+                        background={"https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-1.2.1&auto=format&fit=crop&w=825&q=80"}
                         label="Drinks"
                     />
 

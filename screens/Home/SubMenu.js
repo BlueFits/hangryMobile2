@@ -48,7 +48,7 @@ const SubMenu = ({ navigation, route }) => {
     return (
         <ScrollView>
             <View style={styles.banner}>
-                <ImageBackground source={require("../../assets/images/deserts.jpeg")} style={styles.menuBg}>
+                <ImageBackground source={{ uri: route.params.backgroundUri }} style={styles.menuBg}>
                         <View style={styles.overlay} />
                         <View>
                             <HeaderText style={{ color: "#fff" }}>{TitleFormat(route.params.category)}</HeaderText>

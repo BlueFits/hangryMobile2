@@ -34,12 +34,12 @@ const MenuHeader = ({ navigation }) => {
                                 <TouchableWithoutFeedback onPress={() => navigation.navigate("Home")}>
                                     <AntDesign name="close" size={24} color="white" />  
                                 </TouchableWithoutFeedback>
-                                <TouchableOpacity style={styles.followBttn}>
+                                {/* <TouchableOpacity style={styles.followBttn}>
                                     <View style={styles.followElemContainer}>
                                         <AntDesign name="instagram" size={24} color="white" />
                                         <DefaultText style={{ color: "#fff" }}>Follow</DefaultText>
                                     </View>
-                                </TouchableOpacity>
+                                </TouchableOpacity> */}
                             </View>
                             <View style={styles.container}>
                                 <HeaderText style={styles.text}>{restaurant.name}</HeaderText>
