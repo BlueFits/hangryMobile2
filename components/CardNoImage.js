@@ -7,7 +7,7 @@ const CardNoImage = ({ title, description, price }) => {
         <TouchableOpacity>
             <View style={styles.menuCard}>
                 <View style={styles.menuText}>
-                    <DefaultText>{title}</DefaultText>
+                    <DefaultText style={styles.title}>{title}</DefaultText>
                     <SmallText>{description}</SmallText>
                     <DefaultText>{ price ? `$${price}` : "" }</DefaultText>
                 </View>
@@ -18,24 +18,28 @@ const CardNoImage = ({ title, description, price }) => {
 
 const styles = StyleSheet.create({
     menuCard: {
-        marginVertical: 7.5,
+        marginVertical: 10,
         height: 150,
         width: "100%",
         flexDirection: "row",
         padding: 10,
         backgroundColor: "#fff",
-        borderRadius: 5,
+        borderRadius: 20,
         elevation: 5,
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
+        shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 0.8,
-        shadowRadius: 2,
+        shadowRadius: 8,
     },
     menuText: {
         flex: 3,
         paddingLeft: 15, 
         justifyContent: "space-around",
     },
+    title: {
+        paddingBottom: 10,
+        color: '#000'
+    }
 });
 
 export default CardNoImage;

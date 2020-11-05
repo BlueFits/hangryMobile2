@@ -34,12 +34,11 @@ const MenuHeader = ({ navigation }) => {
                                 <TouchableWithoutFeedback onPress={() => navigation.navigate("Home")}>
                                     <AntDesign name="close" size={24} color="white" />  
                                 </TouchableWithoutFeedback>
-                                {/* <TouchableOpacity style={styles.followBttn}>
+                                <TouchableOpacity>
                                     <View style={styles.followElemContainer}>
-                                        <AntDesign name="instagram" size={24} color="white" />
-                                        <DefaultText style={{ color: "#fff" }}>Follow</DefaultText>
+                                        <AntDesign name="instagram" size={35} color="white" />
                                     </View>
-                                </TouchableOpacity> */}
+                                </TouchableOpacity>
                             </View>
                             <View style={styles.container}>
                                 <HeaderText style={styles.text}>{restaurant.name}</HeaderText>
@@ -94,7 +93,7 @@ const styles = StyleSheet.create({
     },
     followElemContainer: { 
         flexDirection: "row", 
-        width: "65%", 
+        paddingTop: 0,
         justifyContent: "space-between" 
     },
 });

@@ -10,6 +10,7 @@ import Colors from "../constants/Colors";
 //Screens
 import Filler from "../screens/Filler";
 import Qr from "../screens/Qr/qr";
+import Profile from "../screens/Profile/profile";
 
 //Stacks
 import HomeStack from "./stacks/HomeStack";
@@ -35,7 +36,7 @@ const NavigationController = () => {
                 <Tab.Screen name="Qr" component={Qr} options={{
                     tabBarIcon: (tabInfo) => <Ionicons name="ios-qr-scanner" size={24} color={tabInfo.color} />
                 }} />
-                <Tab.Screen name="Account" component={Filler} options={{
+                <Tab.Screen name="Account" component={Profile} options={{
                     tabBarIcon: (tabInfo) => <MaterialCommunityIcons name="account" size={24} color={tabInfo.color} />
                 }} />
             </Tab.Navigator>
