@@ -1,6 +1,5 @@
 import React from "react";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
-import { color } from "react-native-reanimated";
 import { DefaultText, SmallText } from "../controllers/TextController";
 
 const RegularCard = ({ onPress, image, title, description, price }) => {
@@ -8,7 +7,7 @@ const RegularCard = ({ onPress, image, title, description, price }) => {
         <TouchableOpacity onPress={onPress}>
             <View style={styles.menuCard}>
                 <View style={{ flex: 2 }}>
-                    <Image source={image} style={{ height: "100%", width: "100%", borderRadius: "20" }}/>
+                    <Image source={image} style={{ height: "100%", width: "100%" }}/>
                 </View>
                 <View style={styles.menuText}>
                     <DefaultText style={styles.title}>{title}</DefaultText>
