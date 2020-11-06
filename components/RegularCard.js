@@ -7,7 +7,7 @@ const RegularCard = ({ onPress, image, title, description, price }) => {
         <TouchableOpacity onPress={onPress}>
             <View style={styles.menuCard}>
                 <View style={{ flex: 2 }}>
-                    <Image source={image} style={{ height: "100%", width: "100%" }}/>
+                    <Image source={image} style={{ height: "100%", width: "100%", borderRadius: 5 }}/>
                 </View>
                 <View style={styles.menuText}>
                     <DefaultText style={styles.title}>{title}</DefaultText>
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         padding: 10,
         backgroundColor: "#fff",
-        borderRadius: 20,
+        borderRadius: 10,
         elevation: 5,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 10 },
