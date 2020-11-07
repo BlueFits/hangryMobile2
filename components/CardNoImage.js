@@ -9,7 +9,7 @@ const CardNoImage = ({ title, description, price }) => {
                 <View style={styles.menuText}>
                     <DefaultText style={styles.title}>{title}</DefaultText>
                     <SmallText>{description}</SmallText>
-                    <DefaultText>{ price ? `$${price}` : "" }</DefaultText>
+                    <DefaultText>{ price ? `${price}` : "" }</DefaultText>
                 </View>
             </View>
         </TouchableOpacity>

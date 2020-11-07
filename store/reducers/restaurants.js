@@ -15,10 +15,18 @@ export default (state = initialState, action) => {
         case FILTER_CATEGORY:
             return {...state, allRestaurants: action.restaurants};
         case SET_RESTAURANT:
-            return { ...state, selectedRestaurant: action.restaurant, selectedMenu: action.restaurant.menu.mains };
+            let initMenu = {};
+            for (const prop in action.restaurant.menu) {
+                if (action.restaurant.menu[prop].length > 0) {
+                    initMenu = (action.restaurant.menu[prop]);
+                    break;
+                }
+            }
+            return { ...state, selectedRestaurant: action.restaurant, selectedMenu: initMenu };
         case SWITCH_CATEGORY:
             let menuCategory = null;
             let menu = state.selectedRestaurant.menu;
+            
             switch (action.category) {
                 case "mains":
                     menuCategory = menu.mains;
