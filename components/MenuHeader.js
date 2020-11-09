@@ -28,7 +28,7 @@ const MenuHeader = ({ navigation }) => {
 
     return (
         <View style={styles.screen}>
-            <ImageBackground source={{ uri: restaurant.imageUrl }} style={{ width: "100%", height: "100%" }}>
+            <ImageBackground source={{ uri: restaurant.bannerUrl }} style={{ width: "100%", height: "100%" }}>
                             <View style={styles.overlay} />
                             <View style={styles.headerTop}>
                                 <TouchableWithoutFeedback onPress={() => navigation.navigate("Home")}>
