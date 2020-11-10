@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { AppLoading } from "expo";
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useSelector } from "react-redux";
+import * as firebase from "firebase";
 
 //Constants
 import Colors from "../constants/Colors";
@@ -14,11 +16,20 @@ import Profile from "../screens/Profile/profile";
 
 //Stacks
 import HomeStack from "./stacks/HomeStack";
+import AuthStack from "./stacks/AuthStack";
 
 //Initialized Variables
 const Tab = createMaterialBottomTabNavigator();
 
 const NavigationController = () => {
+
+    const userSession = useSelector(authState => authState.authReducer.user);
+    console.log(userSession);
+
+    if (userSession === null) {
+        return <AuthStack />;
+    }
+
     return (
         <NavigationContainer>
             <Tab.Navigator 

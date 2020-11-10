@@ -12,13 +12,13 @@ export default class HomeScreen extends React.Component {
 
     componentDidMount() {
         const { email, displayName, phoneNum } = firebase.auth().currentUser;
-
         this.setState({ email, displayName, phoneNum });
     }
 
     signOutUser = () => {
         firebase.auth().signOut();
     }
+
     render() {
         return (
             <View style={styles.container}>

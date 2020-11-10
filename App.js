@@ -7,12 +7,12 @@ import { AppLoading } from "expo";
 import * as Font from "expo-font";
 import ReduxThunk from "redux-thunk";
 
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import LoadingScreen from './screens/Auth/LoadingScreen';
-import LoginScreen from './screens/Auth/LoginScreen';
-import RegisterScreen from './screens/Auth/RegisterScreen';
-import HomeScreen from './screens/Auth/HomeScreen';
+// import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+// import { createStackNavigator } from 'react-navigation-stack';
+// import LoadingScreen from './screens/Auth/LoadingScreen';
+// import LoginScreen from './screens/Auth/LoginScreen';
+// import RegisterScreen from './screens/Auth/RegisterScreen';
+// import HomeScreen from './screens/Auth/HomeScreen';
 
 import * as firebase from 'firebase';
 
@@ -55,30 +55,30 @@ var firebaseConfig = {
 // Initialize Firebase
 
 
-const AppStack = createStackNavigator({
-  Home: HomeScreen
-})
+// const AppStack = createStackNavigator({
+//   Home: HomeScreen
+// })
 
-const AuthStack = createStackNavigator({
-  Login: LoginScreen,
-  Register: RegisterScreen
-})
+// const AuthStack = createStackNavigator({
+//   Login: LoginScreen,
+//   Register: RegisterScreen
+// })
 
-export default createAppContainer(
+// export default createAppContainer(
 
-  createSwitchNavigator(
-    {
-      Loading: LoadingScreen,
-      App: AppStack,
-      Auth: AuthStack
-    },
-    {
-      initialRouteName: "Loading"
-    }
+//   createSwitchNavigator(
+//     {
+//       Loading: LoadingScreen,
+//       App: AppStack,
+//       Auth: AuthStack
+//     },
+//     {
+//       initialRouteName: "Loading"
+//     }
 
-  )
-)
-/*
+//   )
+// )
+
 export default function App() {
 
   const [fontLoaded, setFontLoaded] = useState(false);
@@ -93,7 +93,7 @@ export default function App() {
     </Provider>
   );
 }
-*/
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

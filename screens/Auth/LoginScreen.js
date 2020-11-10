@@ -10,10 +10,11 @@ export default class LoginScreen extends React.Component {
     };
 
     handleLogin = () => {
-        const { email, password } = this.state
-
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(error => this.setState({ errorMessage: error.message }))
-    }
+        const { email, password } = this.state;
+        firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
+            //Run dispatch here
+        }).catch(error => this.setState({ errorMessage: error.message }));
+    }   
 
     render() {
         return (
@@ -45,8 +46,6 @@ export default class LoginScreen extends React.Component {
                     </Text>
                 </TouchableOpacity>
             </View>
-
-
         );
     }
 }

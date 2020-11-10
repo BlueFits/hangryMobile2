@@ -1,15 +1,15 @@
 import { AUTHENTICATE } from "../actions/auth";
 
 const initState = {
-    //Will Do once back end schemas are known
+    user: null,
 };
 
 export default ( state = initState, action ) => {
     switch (action.type) {
         case AUTHENTICATE: 
-            //Waiting for schemas
-            return state;
-            break;
+            return {
+                user: action.user
+            }
         default:
             return state;
     }
