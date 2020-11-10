@@ -1,69 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import * as firebase from 'firebase';
+import { useDispatch } from "react-redux";
+import { authenticate } from "../../store/actions/auth";
 
-export default class LoginScreen extends React.Component {
-    state = {
-        name: "",
-        email: "",
-        password: "",
-        phoneNum: "",
-        errorMessage: null
+export default RegisterScreen = ({ navigation }) => {
+
+    const dispatch = useDispatch();
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [phoneNum, setPhoneNum] = useState("");
+    const [errorMessage, setErrorMessage] = useState(null);
+
+    const handleSignUp = () => {
+        firebase.auth().createUserWithEmailAndPassword(email, password).then(userCredentials => {
+            // userCredentials.user.updateProfile({
+            //     displayname: this.state.name,
+            //     phoneNum: this.state.phoneNum
+            // });
+            dispatch(authenticate());
+        }).catch(error => setErrorMessage(error.message));
     };
 
-    handleSignUp = () => {
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(userCredentials => {
-            return userCredentials.user.updateProfile({
-                displayname: this.state.name,
-                phoneNum: this.state.phoneNum
-            });
-        })
-            .catch(error => this.setState({ errorMessage: error.message }));
-    }
-
-    render() {
-        return (
-            <View style={StyleSheet.container}>
-                <Text style={styles.greeting}> {'Hello. \nSign Up to get started.'}</Text>
+    return (
+        <View style={StyleSheet.container}>
+            <Text style={styles.greeting}> {'Hello. \nSign Up to get started.'}</Text>
 
 
-                <View style={styles.errorMessage}>
-                    {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
+            <View style={styles.errorMessage}>
+                {errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
+            </View>
+            <View style={styles.form}>
+                <View>
+                    <Text style={styles.inputTitle}> Full name</Text>
+                    <TextInput style={styles.input} autoCapitalize="none" onChangeText={name => setName(name)} value={name}></TextInput>
                 </View>
-                <View style={styles.form}>
-                    <View>
-                        <Text style={styles.inputTitle}> Full name</Text>
-                        <TextInput style={styles.input} autoCapitalize="none" onChangeText={name => this.setState({ name })} value={this.state.name}></TextInput>
-                    </View>
-                    <View style={{ marginTop: 32 }}>
-                        <Text style={styles.inputTitle}> Phone Number</Text>
-                        <TextInput style={styles.input} autoCapitalize="none" onChangeText={phoneNum => this.setState({ phoneNum })} value={this.state.phoneNum}></TextInput>
-                    </View>
-                    <View style={{ marginTop: 32 }}>
-                        <Text style={styles.inputTitle}> Email Address</Text>
-                        <TextInput style={styles.input} autoCapitalize="none" onChangeText={email => this.setState({ email })} value={this.state.email}></TextInput>
-                    </View>
-                    <View style={{ marginTop: 32 }}>
-                        <Text style={styles.inputTitle}> Password </Text>
-                        <TextInput style={styles.input} secureTextEntry autoCapitalize="none" onChangeText={password => this.setState({ password })} value={this.state.password}></TextInput>
-                    </View>
+                <View style={{ marginTop: 32 }}>
+                    <Text style={styles.inputTitle}> Phone Number</Text>
+                    <TextInput style={styles.input} autoCapitalize="none" onChangeText={phoneNum => setPhoneNum(phoneNum)} value={phoneNum}></TextInput>
                 </View>
-
-                <TouchableOpacity style={styles.button} onPress={this.handleSignUp}>
-                    <Text style={{ color: "#FFF", fontWeight: "500" }}>Sign up</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={{ alignSelf: "center", marginTop: 32 }} onPress={() => this.props.navigation.navigate("Login")}>
-                    <Text style={{ color: "#414959", fontSize: 13 }}>
-                        New to Hangry? <Text style={{ fontWeight: "500", color: "#F55E2D" }}>Login</Text>
-                    </Text>
-                </TouchableOpacity>
+                <View style={{ marginTop: 32 }}>
+                    <Text style={styles.inputTitle}> Email Address</Text>
+                    <TextInput style={styles.input} autoCapitalize="none" onChangeText={email => setEmail(email)} value={email}></TextInput>
+                </View>
+                <View style={{ marginTop: 32 }}>
+                    <Text style={styles.inputTitle}> Password </Text>
+                    <TextInput style={styles.input} secureTextEntry autoCapitalize="none" onChangeText={password => setPassword(password)} value={password}></TextInput>
+                </View>
             </View>
 
+            <TouchableOpacity style={styles.button} onPress={() => handleSignUp()}>
+                <Text style={{ color: "#FFF", fontWeight: "500" }}>Sign up</Text>
+            </TouchableOpacity>
 
-        );
-    }
-}
+            <TouchableOpacity style={{ alignSelf: "center", marginTop: 32 }} onPress={() => navigation.navigate("Login")}>
+                <Text style={{ color: "#414959", fontSize: 13 }}>
+                    New to Hangry? <Text style={{ fontWeight: "500", color: "#F55E2D" }}>Login</Text>
+                </Text>
+            </TouchableOpacity>
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
     container: {

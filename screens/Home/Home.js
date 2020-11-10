@@ -46,7 +46,7 @@ const Home = ({ navigation }) => {
         <ScrollView>
             <TouchableWithoutFeedback touchSoundDisabled={true} onPress={() => Keyboard.dismiss()}>
                 <View style={styles.screen}>
-                    <View style={styles.searchContainer}>
+                    {/* <View style={styles.searchContainer}>
                         <Ionicons name="ios-search" size={24} color="black" />
                         <TextInput
                             style={styles.input}
@@ -55,9 +55,9 @@ const Home = ({ navigation }) => {
                             placeholder={"Search restaurant or dish"}
                             placeholderTextColor={"#4D4D4D"}
                         />
-                    </View>
+                    </View> */}
 
-                    <Button title="signOut" onPress={() =>  firebase.auth().signOut()}  />
+                    {/* <Button title="signOut" onPress={() =>  firebase.auth().signOut()}  /> */}
 
 
                     <CardRender 

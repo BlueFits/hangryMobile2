@@ -1,54 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import * as firebase from 'firebase';
+import { useDispatch } from 'react-redux';
+import { authenticate } from "../../store/actions/auth";
 
-export default class LoginScreen extends React.Component {
-    state = {
-        email: "",
-        password: "",
-        errorMessage: null
-    };
+export default Login = ({ navigation }) => {
 
-    handleLogin = () => {
-        const { email, password } = this.state;
+    const dispatch = useDispatch();
+
+    const [email, setEmail] = useState("");
+    const [password, setPasssword] = useState("");
+    const [errorMessage, setErrorMessage] = useState(null);
+
+    const handleLogin = () => {
         firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-            //Run dispatch here
-        }).catch(error => this.setState({ errorMessage: error.message }));
-    }   
+            console.log("This vibe");
+            dispatch(authenticate());
+        }).catch(error => {
+            console.log("This ran");
+            setErrorMessage(error.message)
+        });    
+    }
 
-    render() {
-        return (
-            <View style={StyleSheet.container}>
-                <Text style={styles.greeting}> {'Hello again. \nWelcome back.'}</Text>
-
-
+    return (
+        <View style={StyleSheet.container}>
+                <Text style={styles.greeting}> {'Helleo again. \nWelcome back.'}</Text>
                 <View style={styles.errorMessage}>
-                    {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
+                    {errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
                 </View>
                 <View style={styles.form}>
                     <View>
                         <Text style={styles.inputTitle}> Email Address</Text>
-                        <TextInput style={styles.input} autoCapitalize="none" onChangeText={email => this.setState({ email })} value={this.state.email}></TextInput>
+                        <TextInput style={styles.input} autoCapitalize="none" onChangeText={email => setEmail(email)} value={email}></TextInput>
                     </View>
                     <View style={{ marginTop: 32 }}>
                         <Text style={styles.inputTitle}> Password </Text>
-                        <TextInput style={styles.input} secureTextEntry autoCapitalize="none" onChangeText={password => this.setState({ password })} value={this.state.password}></TextInput>
+                        <TextInput style={styles.input} secureTextEntry autoCapitalize="none" onChangeText={password => setPasssword(password)} value={password}></TextInput>
                     </View>
                 </View>
 
-                <TouchableOpacity style={styles.button} onPress={this.handleLogin}>
+                <TouchableOpacity style={styles.button} onPress={handleLogin}>
                     <Text style={{ color: "#FFF", fontWeight: "500" }}>Sign in</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{ alignSelf: "center", marginTop: 32 }} onPress={() => this.props.navigation.navigate("Register")}>
+                <TouchableOpacity style={{ alignSelf: "center", marginTop: 32 }} onPress={() => navigation.navigate("Register")}>
                     <Text style={{ color: "#414959", fontSize: 13 }}>
                         New to Hangry? <Text style={{ fontWeight: "500", color: "#F55E2D" }}>Sign Up</Text>
                     </Text>
                 </TouchableOpacity>
             </View>
-        );
-    }
-}
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
