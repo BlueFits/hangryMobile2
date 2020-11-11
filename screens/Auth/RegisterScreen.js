@@ -16,11 +16,13 @@ export default RegisterScreen = ({ navigation }) => {
 
     const handleSignUp = () => {
         firebase.auth().createUserWithEmailAndPassword(email, password).then(userCredentials => {
-            // userCredentials.user.updateProfile({
-            //     displayname: this.state.name,
-            //     phoneNum: this.state.phoneNum
-            // });
-            dispatch(authenticate());
+            userCredentials.user.updateProfile({
+                displayname: name,
+                phoneNum: phoneNum,
+            }).then(() => {
+                dispatch(authenticate());
+            });
+            // dispatch(authenticate());
         }).catch(error => setErrorMessage(error.message));
     };
 

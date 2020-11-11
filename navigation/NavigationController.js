@@ -29,6 +29,8 @@ const NavigationController = () => {
         return <AuthStack />;
     }
 
+    console.log(userSession);
+
     return (
         <NavigationContainer>
             <Tab.Navigator 
