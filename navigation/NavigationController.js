@@ -1,16 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { AppLoading } from "expo";
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useSelector } from "react-redux";
-import * as firebase from "firebase";
 
 //Constants
 import Colors from "../constants/Colors";
 
 //Screens
-import Filler from "../screens/Filler";
 import Qr from "../screens/Qr/qr";
 import Profile from "../screens/Profile/profile";
 
@@ -28,8 +25,6 @@ const NavigationController = () => {
     if (userSession === null) {
         return <AuthStack />;
     }
-
-    console.log(userSession);
 
     return (
         <NavigationContainer>

@@ -14,10 +14,8 @@ export default Login = ({ navigation }) => {
 
     const handleLogin = () => {
         firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-            console.log("This vibe");
             dispatch(authenticate());
         }).catch(error => {
-            console.log("This ran");
             setErrorMessage(error.message)
         });    
     }
