@@ -24,7 +24,7 @@ const Tab = createMaterialBottomTabNavigator();
 const NavigationController = () => {
 
     const userSession = useSelector(authState => authState.authReducer.user);
-    
+
     if (userSession === null) {
         return <AuthStack />;
     }
