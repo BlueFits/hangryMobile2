@@ -6,7 +6,7 @@ import * as firebase from "firebase";
 
 const Profile = () => {
   const currentUser = useSelector((state) => state.authReducer.user);
-
+  console.log(currentUser);
   const handleLogout = () => {
     firebase
       .auth()
@@ -23,7 +23,9 @@ const Profile = () => {
       {/* Header section */}
       <View style={styles.header}>
         <MaterialCommunityIcons name='account' size={200} color='#fe6a33' />
-        <Text style={{ fontSize: 25, paddingTop: 0 }}>{currentUser.email}</Text>
+        <Text style={{ fontSize: 25, paddingTop: 5 }}>
+          {currentUser.displayName}
+        </Text>
         {/* <Text style={{ fontSize: 18, paddingTop: 7, color: "#808080" }}>
           Location
         </Text> */}
@@ -31,17 +33,17 @@ const Profile = () => {
 
       {/* email info */}
       <View style={styles.line}></View>
-      {/* <View style={styles.card}>
+      <View style={styles.card}>
         <AntDesign style={styles.icon} name='mail' size={35} color='#fe6a33' />
         <Text style={styles.text}>{currentUser.email}</Text>
-      </View> */}
+      </View>
 
       {/* cell info */}
-      {/* <View style={styles.line}></View>
+      <View style={styles.line}></View>
       <View style={styles.card}>
         <AntDesign style={styles.icon} name='phone' size={35} color='#fe6a33' />
-        <Text style={styles.text}>416-659-4377</Text>
-      </View> */}
+        <Text style={styles.text}>{currentUser.photoURL}</Text>
+      </View>
       <TouchableOpacity style={styles.button} onPress={handleLogout}>
         <Text style={{ color: "#FFF", fontWeight: "500", fontSize: 18 }}>
           Logout
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
     width: "60%",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 40,
+    marginTop: 10,
   },
 });
 

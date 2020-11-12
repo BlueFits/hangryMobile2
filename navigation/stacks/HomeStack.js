@@ -1,7 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { CardStyleInterpolators } from '@react-navigation/stack';
-
+import { CardStyleInterpolators } from "@react-navigation/stack";
 
 //Screens
 import Home from "../../screens/Home/Home";
@@ -21,42 +20,57 @@ import MenuHeader from "../../components/MenuHeader";
 const Stack = createStackNavigator();
 
 const HomeStack = () => {
-    return (
-        <Stack.Navigator screenOptions={defaultOptions}>
-            <Stack.Screen name="Home" component={Home} options={screenOptions}/>
-            <Stack.Screen name="SubMenu" component={SubMenu} options={{...screenOptions, ...{
-                cardStyle: {
-                    backgroundColor: "#F4F4F4",
-                },
-                //cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-            }}}/>
-            <Stack.Screen name="Menu" component={Menu} options={({ route, navigation }) => {
-                return ({
-                    header: () => {
-                        return <MenuHeader navigation={navigation}/>
-                    }, 
-                });
-            }}/>
-            <Stack.Screen name="Preview" component={previewSelection} options={{
-                title: "",
-            }}/>
-        </Stack.Navigator>
-    );
+  return (
+    <Stack.Navigator screenOptions={defaultOptions}>
+      <Stack.Screen name='Home' component={Home} options={screenOptions} />
+      <Stack.Screen
+        name='SubMenu'
+        component={SubMenu}
+        options={{
+          ...screenOptions,
+          ...{
+            cardStyle: {
+              backgroundColor: "#F4F4F4",
+            },
+            //cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          },
+        }}
+      />
+      <Stack.Screen
+        name='Menu'
+        component={Menu}
+        options={({ route, navigation }) => {
+          return {
+            header: () => {
+              return <MenuHeader navigation={navigation} />;
+            },
+          };
+        }}
+      />
+      <Stack.Screen
+        name='Preview'
+        component={previewSelection}
+        options={{
+          title: "",
+        }}
+      />
+    </Stack.Navigator>
+  );
 };
 
 //Options
 const defaultOptions = {
-    headerStyle: {
-        elevation: 0,
-        shadowColor: "transparent",
-    },
+  headerStyle: {
+    elevation: 0,
+    shadowColor: "transparent",
+  },
 };
 
 const screenOptions = {
-    title: "",
-    cardStyle: {
-        backgroundColor: "white",
-    },
+  title: "",
+  cardStyle: {
+    backgroundColor: "white",
+  },
 };
 
 export default HomeStack;

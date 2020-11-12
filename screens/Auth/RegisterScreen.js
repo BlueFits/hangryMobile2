@@ -23,11 +23,15 @@ export default RegisterScreen = ({ navigation }) => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
-        // userCredentials.user.updateProfile({
-        //     displayname: this.state.name,
-        //     phoneNum: this.state.phoneNum
-        // });
+      .then(() => {
+        const user = firebase.auth().currentUser;
+        console.log("hellllloooo", firebase.auth().AuthCredential);
+        user
+          .updateProfile({ displayName: name, photoURL: phoneNum })
+          .then(function () {})
+          .catch(function (error) {
+            // An error happened.
+          });
         dispatch(authenticate());
       })
       .catch((error) => setErrorMessage(error.message));

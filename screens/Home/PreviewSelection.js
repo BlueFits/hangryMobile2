@@ -20,7 +20,7 @@ const PreviewSelection = ({ route }) => {
           start={[0, 0.8]}
         >
           <HeaderText style={{ color: "#fff" }}>{route.params.name}</HeaderText>
-          {route.params.shortDescription !== "None" && (
+          {route.params.shortDescription !== "none" && (
             <DefaultText style={{ color: "#fff" }}>
               {route.params.shortDescription}
             </DefaultText>
@@ -41,19 +41,23 @@ const styles = StyleSheet.create({
   overlay,
   bgImg: {
     flex: 1,
-    width: "100%",
-    height: "100%",
-    marginTop: 150,
     justifyContent: "flex-end",
     ...Platform.select({
       ios: {
-        marginTop: 150,
+        marginTop: 170,
+        width: "95%",
+        height: "95%",
+        marginLeft: 18,
       },
-      android: {},
+      android: {
+        width: "100%",
+        height: "100%",
+      },
     }),
   },
   textContainer: {
-    height: 120,
+    height: 150,
+    width: "100%",
     justifyContent: "center",
     padding: 20,
   },
