@@ -60,11 +60,11 @@ const Home = ({ navigation }) => {
                     {/* <Button title="signOut" onPress={() =>  firebase.auth().signOut()}  /> */}
 
 
-                    <CardRender 
+                    {/* <CardRender 
                         onPress={onPressHandler.bind(this, "pizza", "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80")}
                         background={"https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"}
                         label="Pizza"
-                    />
+                    /> */}
 
                     <CardRender 
                         onPress={onPressHandler.bind(this, "chinese", "https://images.unsplash.com/photo-1562403492-454d4b075cac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1329&q=80")}
@@ -100,6 +100,12 @@ const Home = ({ navigation }) => {
                         onPress={onPressHandler.bind(this, "japanese", "https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=625&q=80")}
                         background={"https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=625&q=80"}
                         label="Japanese"
+                    />
+
+                    <CardRender 
+                        onPress={onPressHandler.bind(this, "pub", "https://images.unsplash.com/photo-1549807315-f5fa45619e33?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80")}
+                        background={"https://images.unsplash.com/photo-1549807315-f5fa45619e33?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80"}
+                        label="Pub"
                     />
 
                     <CardRender 

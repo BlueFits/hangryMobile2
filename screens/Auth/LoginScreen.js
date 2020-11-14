@@ -22,7 +22,7 @@ export default Login = ({ navigation }) => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        console.log("hellllloooo", firebase.auth.AuthCredential);
+        // console.log("hellllloooo", firebase.auth.AuthCredential);
         dispatch(authenticate());
       })
       .catch((error) => {
