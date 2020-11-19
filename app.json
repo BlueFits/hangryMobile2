@@ -23,7 +23,11 @@
       "favicon": "./assets/favicon.png"
     },
     "android": {
-      "package": "com.group.hangry"
+      "package": "com.group.hangry",
+      "versionCode": 2,
+      "permissions": [
+        "CAMERA"
+      ]
     }
   }
 }
