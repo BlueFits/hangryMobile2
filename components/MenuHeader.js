@@ -42,7 +42,7 @@ const MenuHeader = ({ navigation }) => {
   return (
     <View style={styles.screen}>
       <ImageBackground
-        source={{ uri: restaurant.bannerUrl }}
+        source={{ uri: restaurant.bannerUrl === "none" ? restaurant.imageUrl : restaurant.bannerUrl  }}
         style={{ width: "100%", height: "100%" }}
       >
         <View style={styles.overlay} />

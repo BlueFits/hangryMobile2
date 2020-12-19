@@ -32,6 +32,7 @@ const NavigationController = () => {
     return (
         <NavigationContainer>
             <Tab.Navigator 
+                labeled={false}
                 initialRouteName="Home"
                 barStyle={{ backgroundColor: Colors.primary }}
                 activeColor="#fff"
