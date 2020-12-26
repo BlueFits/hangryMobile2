@@ -16,13 +16,14 @@ const SubMenu = ({ navigation, route }) => {
 
     let restaurants = useSelector(state => state.restaurantReducer.allRestaurants);
 
-    useEffect(() => {
-        const leaveScreen = navigation.addListener("blur", () => {
-            dispatch(clearRestaurants());
-        });
+    //Reset Page after leaving screen
+    // useEffect(() => {
+    //     const leaveScreen = navigation.addListener("blur", () => {
+    //         dispatch(clearRestaurants());
+    //     });
 
-        return leaveScreen
-    }, [navigation]);
+    //     return leaveScreen;
+    // }, [navigation]);
 
     //Methods
 
