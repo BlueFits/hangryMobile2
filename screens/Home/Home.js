@@ -57,9 +57,6 @@ const Home = ({ navigation }) => {
                         />
                     </View> */}
 
-                    {/* <Button title="signOut" onPress={() =>  firebase.auth().signOut()}  /> */}
-
-
                     {/* <CardRender 
                         onPress={onPressHandler.bind(this, "pizza", "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80")}
                         background={"https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"}
