@@ -2,13 +2,13 @@ import React from "react";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { DefaultText, SmallText } from "../controllers/TextController";
 
-const RegularCard = ({ onPress, image, title, description, price }) => {
+const RegularCard = ({ onPress, image, title, description, price, banner }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.menuCard}>
         <View style={{ flex: 2 }}>
           <Image
-            source={image}
+            source={banner}
             style={{ height: "100%", width: "100%", borderRadius: 5 }}
           />
         </View>

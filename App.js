@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import 'react-native-gesture-handler';
+import React, { useState } from "react";
+import "react-native-gesture-handler";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
 import ReduxThunk from "redux-thunk";
 
-import * as firebase from 'firebase';
+import * as firebase from "firebase";
 
 //Navigation
 import NavigationController from "./navigation/NavigationController";
@@ -15,7 +15,6 @@ import NavigationController from "./navigation/NavigationController";
 //Reducer Imports Here
 import authReducer from "./store/reducers/auth";
 import restaurantReducer from "./store/reducers/restaurants";
-
 
 const rootReducer = combineReducers({
   authReducer,
@@ -26,9 +25,9 @@ const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 const fetchFonts = () => {
   return Font.loadAsync({
-    "roboto-regular": require("./assets/fonts/Roboto-Regular.ttf"),
-    "roboto-bold": require("./assets/fonts/Roboto-Bold.ttf"),
-    "roboto-medium": require("./assets/fonts/Roboto-Medium.ttf"),
+    "roboto-regular": require("./assets/fonts/Montserrat-Regular.ttf"),
+    "roboto-bold": require("./assets/fonts/Montserrat-Bold.ttf"),
+    "roboto-medium": require("./assets/fonts/Montserrat-Medium.ttf"),
   });
 };
 
@@ -39,7 +38,7 @@ var firebaseConfig = {
   projectId: "hangry-e75ec",
   storageBucket: "hangry-e75ec.appspot.com",
   messagingSenderId: "1086050370672",
-  appId: "1:1086050370672:web:eb084d99916d137d3d60b5"
+  appId: "1:1086050370672:web:eb084d99916d137d3d60b5",
 };
 
 !firebase.apps.length
@@ -48,11 +47,15 @@ var firebaseConfig = {
 // Initialize Firebase
 
 export default function App() {
-
   const [fontLoaded, setFontLoaded] = useState(false);
 
   if (!fontLoaded) {
-    return <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} />
+    return (
+      <AppLoading
+        startAsync={fetchFonts}
+        onFinish={() => setFontLoaded(true)}
+      />
+    );
   }
 
   return (
@@ -65,8 +68,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

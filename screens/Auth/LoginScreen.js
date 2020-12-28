@@ -22,12 +22,24 @@ export default Login = ({ navigation }) => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        // console.log("hellllloooo", firebase.auth.AuthCredential);
         dispatch(authenticate());
       })
       .catch((error) => {
-        console.log("This ran");
         setErrorMessage(error.message);
+      });
+  };
+
+  const guestLogin = () => {
+    firebase
+      .auth()
+      .signInAnonymously()
+      .then(() => {
+        dispatch(authenticate());
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
       });
   };
 
@@ -70,6 +82,11 @@ export default Login = ({ navigation }) => {
         <Text style={{ color: "#414959", fontSize: 13 }}>
           New to Hangry?{" "}
           <Text style={{ fontWeight: "500", color: "#F55E2D" }}>Sign Up</Text>
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.guest} onPress={guestLogin}>
+        <Text style={{ color: "#FFF", fontWeight: "500" }}>
+          Continue as Guest
         </Text>
       </TouchableOpacity>
     </View>
@@ -115,6 +132,15 @@ const styles = StyleSheet.create({
     color: "#161F3D",
   },
   button: {
+    marginHorizontal: 30,
+    backgroundColor: "#F55E2D",
+    borderRadius: 4,
+    height: 52,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  guest: {
+    marginTop: 60,
     marginHorizontal: 30,
     backgroundColor: "#F55E2D",
     borderRadius: 4,

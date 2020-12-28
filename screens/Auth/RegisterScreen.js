@@ -9,6 +9,10 @@ import {
 import * as firebase from "firebase";
 import { useDispatch } from "react-redux";
 import { authenticate } from "../../store/actions/auth";
+import {
+  EachWordUppercase,
+  formatPhoneNumber,
+} from "../../controllers/FormatController";
 
 export default RegisterScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -25,9 +29,11 @@ export default RegisterScreen = ({ navigation }) => {
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         const user = firebase.auth().currentUser;
-        console.log("hellllloooo", firebase.auth().AuthCredential);
         user
-          .updateProfile({ displayName: name, photoURL: phoneNum })
+          .updateProfile({
+            displayName: EachWordUppercase(name),
+            photoURL: formatPhoneNumber(phoneNum),
+          })
           .then(function () {})
           .catch(function (error) {
             // An error happened.
@@ -41,7 +47,7 @@ export default RegisterScreen = ({ navigation }) => {
     <View style={StyleSheet.container}>
       <Text style={styles.greeting}>
         {" "}
-        {"Welcome to Hangry. \nSign Up to get started."}
+        {"Welcome to Hangry \nSign up to get started."}
       </Text>
 
       <View style={styles.errorMessage}>
@@ -96,7 +102,7 @@ export default RegisterScreen = ({ navigation }) => {
         onPress={() => navigation.navigate("Login")}
       >
         <Text style={{ color: "#414959", fontSize: 13 }}>
-          New to Hangry?{" "}
+          Already have an Account?{" "}
           <Text style={{ fontWeight: "500", color: "#F55E2D" }}>Login</Text>
         </Text>
       </TouchableOpacity>

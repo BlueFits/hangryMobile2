@@ -67,7 +67,7 @@ const RestaurantMenu = ({ navigation }) => {
                 category={FirstLetterUppercase(item.shortDescription)}
               />
             );
-          } else {
+          } else if (!item.isSpecial) {
             return (
               <RegularCard
                 key={"menuKey" + index}

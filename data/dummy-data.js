@@ -20,7 +20,7 @@ const RESTAURANTS = [
       [
         new Item(
           "1",
-          "French Maddys",
+          "Loading...",
           "Delicously made",
           "Our beautifully crafted maddys are baked fresh daily, and created with strawberry cream, ready to die for.",
           9.99,
@@ -29,7 +29,7 @@ const RESTAURANTS = [
         ),
         new Item(
           "2",
-          "Dirty Dough",
+          "Loading...",
           "I promise its good",
           "Made for the extremist of extremist, requires great will to overcome the one of a kind taste.",
           10.99,
@@ -40,7 +40,7 @@ const RESTAURANTS = [
       [
         new Item(
           "2",
-          "Killy",
+          "Loading...",
           "I promise its good",
           "Made for the extremist of extremist, requires great will to overcome the one of a kind taste.",
           10.99,
@@ -51,7 +51,7 @@ const RESTAURANTS = [
       [
         new Item(
           "2",
-          "Killy",
+          "Loading...",
           "I promise its good",
           "Made for the extremist of extremist, requires great will to overcome the one of a kind taste.",
           10.99,
@@ -61,7 +61,7 @@ const RESTAURANTS = [
       [
         new Item(
           "2",
-          "Killy",
+          "Loading...",
           "I promise its good",
           "Made for the extremist of extremist, requires great will to overcome the one of a kind taste.",
           10.99,

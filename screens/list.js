@@ -11,11 +11,7 @@ class Source extends Component {
   componentDidMount() {
     fetch("https://hangry-backend.herokuapp.com/")
       .then((res) => res.json())
-      .then((restaurants) =>
-        this.setState({ restaurants }, () => {
-          //console.log("restaurants fetched...", restaurants);
-        })
-      );
+      .then((restaurants) => this.setState({ restaurants }, () => {}));
   }
   render() {
     return this.state.restaurants.map((restaurant, i) => {
