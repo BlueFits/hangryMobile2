@@ -105,6 +105,7 @@ const options = {
   tabStyle: {
     width: 130,
     zindex: 10,
+    color: "red",
   },
   indicatorStyle: {
     backgroundColor: "#F26224",

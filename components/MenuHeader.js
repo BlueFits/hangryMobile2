@@ -56,6 +56,14 @@ const MenuHeader = ({ navigation }) => {
           source={{ uri: restaurant.bannerUrl }}
           style={{ width: "100%", height: "100%" }}
         >
+          <TouchableWithoutFeedback onPress={() => navigation.navigate("Home")}>
+            <AntDesign
+              name='close'
+              size={28}
+              color='white'
+              style={styles.back}
+            />
+          </TouchableWithoutFeedback>
           <Image source={{ uri: restaurant.imageUrl }} style={styles.image} />
           <View style={styles.boxContainer}>
             <Image source={restaurant.imageUrl} style={styles.image} />
@@ -106,7 +114,9 @@ const MenuHeader = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   screen: {
-    height: 215,
+    height: 260,
+    paddingBottom: "8%",
+    backgroundColor: "#FFF",
   },
   container: {
     flex: 1,
@@ -155,8 +165,13 @@ const styles = StyleSheet.create({
     left: "4%",
     alignItems: "center",
     width: "92%",
-    height: "80%",
+    height: "60%",
     borderRadius: 12,
+    elevation: 5,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
   },
   space: {
     height: "11%",
@@ -173,16 +188,21 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   title: {
-    top: "25%",
+    top: "35%",
   },
   address: {
-    top: "30%",
+    top: "38%",
     width: "80%",
+    left: "3%",
     fontSize: 14,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "red",
+  },
+  back: {
+    position: "absolute",
+    top: "20%",
+    left: "5%",
   },
 });
 

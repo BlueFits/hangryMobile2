@@ -44,10 +44,9 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     ...Platform.select({
       ios: {
-        marginTop: 170,
-        width: "95%",
-        height: "95%",
-        marginLeft: 18,
+        width: "100%",
+        height: "100%",
+        zIndex: 10,
       },
       android: {
         width: "100%",
