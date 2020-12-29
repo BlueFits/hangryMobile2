@@ -19,13 +19,19 @@ const RestaurantCard = ({
   banner,
   address,
 }) => {
+  address = addressFormat(address);
+  console.log(address);
+  if (address.length <= 38) {
+  } else {
+    address = address.substring(0, 34).concat("...");
+  }
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.menuCard}>
         <Image source={banner} style={styles.banner} />
         <Image source={image} style={styles.image} />
-        <DefaultText style={styles.title}>{title}</DefaultText>
-        <SmallText style={styles.address}>{addressFormat(address)}</SmallText>
+        <HeaderText style={styles.title}>{title}</HeaderText>
+        <SmallText style={styles.address}>{address}</SmallText>
         <SmallText style={styles.description}>
           {descriptionFormat(description)}
         </SmallText>
@@ -74,7 +80,7 @@ const styles = StyleSheet.create({
   title: {
     position: "absolute",
     top: "48%",
-    left: "37%",
+    left: "36%",
     color: "#000",
     fontSize: normalize(16),
   },
@@ -101,7 +107,7 @@ const styles = StyleSheet.create({
   },
   address: {
     position: "absolute",
-    left: "37%",
+    left: "36%",
     top: "60%",
     fontSize: normalize(9),
     color: "#808080",

@@ -28,14 +28,25 @@ export const formatPhoneNumber = (phoneNumberString) => {
 };
 
 export const addressFormat = (address) => {
-  if (address.length <= 38) {
-  } else {
-    address = address.substring(0, 34).concat("...");
-  }
-  return address.replace(
+  //Grab postal code and make upper case
+  let postalCode = address
+    .substring(address.length - 11, address.length)
+    .toUpperCase();
+  postalCode.toUpperCase();
+
+  //remove postal code from address
+  address = address.substring(0, address.length - 11);
+
+  //make all characters upper case
+  address = address.replace(
     /\w\S*/g,
     (text) => text.charAt(0).toUpperCase() + text.substr(1).toLowerCase()
   );
+
+  //add postal code to address
+  address = address.concat(postalCode);
+
+  return address;
 };
 
 export const descriptionFormat = (description) => {

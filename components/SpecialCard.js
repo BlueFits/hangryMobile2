@@ -15,6 +15,7 @@ import {
 
 //Constants
 import { overlay } from "../constants/StyleConstants";
+import { normalize } from "../controllers/FontController";
 
 const SpecialCard = ({
   backgroundImage,
@@ -38,12 +39,14 @@ const SpecialCard = ({
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
             {shortDescription !== "None" && (
-              <DefaultText style={{ color: "#fff" }}>
+              <DefaultText style={{ color: "#fff", fontSize: normalize(13) }}>
                 {shortDescription}
               </DefaultText>
             )}
 
-            <DefaultText style={{ color: "#fff" }}>{price}</DefaultText>
+            <DefaultText style={{ color: "#fff", fontSize: normalize(13) }}>
+              {price}
+            </DefaultText>
           </View>
         </View>
       </ImageBackground>

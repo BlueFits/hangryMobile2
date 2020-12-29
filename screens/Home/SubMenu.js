@@ -23,13 +23,13 @@ const SubMenu = ({ navigation, route }) => {
     (state) => state.restaurantReducer.allRestaurants
   );
 
-  useEffect(() => {
-    const leaveScreen = navigation.addListener("blur", () => {
-      dispatch(clearRestaurants());
-    });
+  // useEffect(() => {
+  //   const leaveScreen = navigation.addListener("blur", () => {
+  //     dispatch(clearRestaurants());
+  //   });
 
-    return leaveScreen;
-  }, [navigation]);
+  //   return leaveScreen;
+  // }, [navigation]);
 
   //Methods
 

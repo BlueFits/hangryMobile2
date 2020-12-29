@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
   desc: {
     position: "absolute",
     top: "45%",
+    color: "#808080",
     left: "4%",
     fontSize: normalize(11),
   },
@@ -62,7 +63,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: "22%",
     left: "4%",
-    color: "#808080",
     fontSize: normalize(12),
     marginBottom: 20,
   },

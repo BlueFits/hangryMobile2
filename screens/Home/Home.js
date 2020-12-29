@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -13,6 +13,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import * as firebase from "firebase";
+import { clearRestaurants } from "../../store/actions/restaurants";
 
 //Action Redux
 import { filterCategory } from "../../store/actions/restaurants";
@@ -27,6 +28,14 @@ const Home = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    const leaveScreen = navigation.addListener("focus", () => {
+      dispatch(clearRestaurants());
+    });
+
+    return leaveScreen;
+  }, [navigation]);
 
   //Methods
   const onPressHandler = (category, backgroundUri) => {

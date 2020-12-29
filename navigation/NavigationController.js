@@ -5,6 +5,7 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import * as firebase from "firebase";
+import { ImageBackground } from "react-native";
 
 //Constants
 import Colors from "../constants/Colors";

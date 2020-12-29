@@ -71,7 +71,7 @@ const MenuHeader = ({ navigation }) => {
               {TitleFormat(restaurant.name)}
             </HeaderText>
             <DefaultText style={styles.address}>
-              {TitleFormat(restaurant.address)}
+              {addressFormat(restaurant.address)}
             </DefaultText>
           </View>
           {/* <View style={styles.overlay} />
@@ -116,6 +116,9 @@ const styles = StyleSheet.create({
     height: 260,
     paddingBottom: "8%",
     backgroundColor: "#FFF",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   container: {
     flex: 1,
@@ -171,6 +174,9 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   space: {
     height: "11%",
@@ -187,17 +193,15 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   title: {
-    top: "35%",
+    top: "10%",
     fontSize: normalize(20),
+    textAlign: "center",
   },
   address: {
-    top: "38%",
-    width: "80%",
-    left: "3%",
+    top: "15%",
+    width: "60%",
     fontSize: normalize(11),
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    textAlign: "center",
   },
   back: {
     position: "absolute",

@@ -6,6 +6,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { DefaultText, HeaderText } from "../../controllers/TextController";
 import { overlay } from "../../constants/StyleConstants";
 import { preventAutoHide } from "expo/build/launch/SplashScreen";
+import { TitleFormat } from "../../controllers/FormatController";
 
 const PreviewSelection = ({ route }) => {
   return (
@@ -19,7 +20,9 @@ const PreviewSelection = ({ route }) => {
           style={styles.textContainer}
           start={[0, 0.8]}
         >
-          <HeaderText style={{ color: "#fff" }}>{route.params.name}</HeaderText>
+          <HeaderText style={{ color: "#fff" }}>
+            {TitleFormat(route.params.name)}
+          </HeaderText>
           {route.params.shortDescription !== "none" && (
             <DefaultText style={{ color: "#fff" }}>
               {route.params.shortDescription}

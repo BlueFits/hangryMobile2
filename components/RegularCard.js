@@ -1,7 +1,11 @@
 import React from "react";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
-import { DefaultText, SmallText } from "../controllers/TextController";
-
+import {
+  DefaultText,
+  SmallText,
+  HeaderText,
+} from "../controllers/TextController";
+import { normalize } from "../controllers/FontController";
 const RegularCard = ({ onPress, image, title, description, price, banner }) => {
   return (
     <TouchableOpacity onPress={onPress}>
@@ -13,10 +17,14 @@ const RegularCard = ({ onPress, image, title, description, price, banner }) => {
           />
         </View>
         <View style={styles.menuText}>
-          <DefaultText style={styles.title}>{title}</DefaultText>
-          {description !== "None" && <SmallText>hellloo</SmallText>}
+          <HeaderText style={styles.title}>{title}</HeaderText>
+          {description !== "None" && (
+            <SmallText style={styles.desc}>{description}</SmallText>
+          )}
 
-          <DefaultText>{price ? `${price}` : ""}</DefaultText>
+          <DefaultText style={styles.price}>
+            {price ? `${price}` : ""}
+          </DefaultText>
         </View>
       </View>
     </TouchableOpacity>
@@ -44,8 +52,25 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   title: {
+    position: "absolute",
+    top: "5%",
+    left: "4%",
+    fontSize: normalize(14),
+
     paddingBottom: 10,
     color: "#000",
+  },
+  price: {
+    position: "absolute",
+    top: "80%",
+    left: "4%",
+    fontSize: normalize(14),
+  },
+  desc: {
+    position: "absolute",
+    top: "45%",
+    left: "4%",
+    fontSize: normalize(12),
   },
 });
 
