@@ -6,6 +6,7 @@ import {
   HeaderText,
 } from "../controllers/TextController";
 import { TitleFormat, addressFormat } from "../controllers/FormatController";
+import { normalize } from "../controllers/FontController";
 
 const RestaurantCard = ({
   onPress,
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     top: "48%",
     left: "37%",
     color: "#000",
-    fontSize: 21,
+    fontSize: normalize(16),
   },
   banner: {
     width: "100%",
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: "37%",
     top: "60%",
-    fontSize: 12,
+    fontSize: normalize(9),
     color: "#808080",
   },
   description: {
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
     width: "93%",
     left: "4%",
     top: "70%",
-    fontSize: 14,
+    fontSize: normalize(11),
     color: "#808080",
     display: "flex",
     flex: 3,

@@ -12,6 +12,7 @@ import {
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import * as Linking from "expo-linking";
+import { normalize } from "../controllers/FontController";
 
 //Components
 import Touchable from "../components/Touchable";
@@ -189,12 +190,13 @@ const styles = StyleSheet.create({
   },
   title: {
     top: "35%",
+    fontSize: normalize(20),
   },
   address: {
     top: "38%",
     width: "80%",
     left: "3%",
-    fontSize: 14,
+    fontSize: normalize(11),
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

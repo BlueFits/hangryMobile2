@@ -36,7 +36,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "#FFF",
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    zIndex: 10,
   },
   overlay,
   bgImg: {
@@ -44,9 +48,11 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     ...Platform.select({
       ios: {
-        width: "100%",
-        height: "100%",
-        zIndex: 10,
+        width: "95%",
+        height: "95%",
+        position: "absolute",
+        top: "7%",
+        left: "5%",
       },
       android: {
         width: "100%",
@@ -55,10 +61,11 @@ const styles = StyleSheet.create({
     }),
   },
   textContainer: {
-    height: 150,
+    position: "absolute",
     width: "100%",
+    aspectRatio: 10 / 4,
     justifyContent: "center",
-    padding: 20,
+    padding: "4%",
   },
 });
 
