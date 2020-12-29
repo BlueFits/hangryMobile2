@@ -34,8 +34,6 @@ const MenuHeader = ({ navigation }) => {
     (state) => state.restaurantReducer.selectedRestaurant
   );
 
-  console.log(restaurant);
-
   const instagramOpen = (instagramHandle) => {
     if (instagramHandle !== "none") {
       Linking.openURL(instagramHandle);
@@ -171,7 +169,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.1,
     shadowRadius: 8,
   },
   space: {

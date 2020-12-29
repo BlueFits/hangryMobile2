@@ -39,7 +39,7 @@ export const SmallText = (props) => {
 //Styles
 const styles = StyleSheet.create({
   defaultText: {
-    fontSize: 30,
+    fontSize: 16,
     color: "#404040",
   },
   header: {

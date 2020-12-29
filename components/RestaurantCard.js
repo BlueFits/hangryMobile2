@@ -5,7 +5,10 @@ import {
   SmallText,
   HeaderText,
 } from "../controllers/TextController";
-import { TitleFormat, addressFormat } from "../controllers/FormatController";
+import {
+  descriptionFormat,
+  addressFormat,
+} from "../controllers/FormatController";
 import { normalize } from "../controllers/FontController";
 
 const RestaurantCard = ({
@@ -23,7 +26,9 @@ const RestaurantCard = ({
         <Image source={image} style={styles.image} />
         <DefaultText style={styles.title}>{title}</DefaultText>
         <SmallText style={styles.address}>{addressFormat(address)}</SmallText>
-        <SmallText style={styles.description}>{description}</SmallText>
+        <SmallText style={styles.description}>
+          {descriptionFormat(description)}
+        </SmallText>
       </View>
     </TouchableOpacity>
     // <TouchableOpacity onPress={onPress}>

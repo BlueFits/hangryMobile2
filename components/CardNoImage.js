@@ -5,6 +5,7 @@ import {
   SmallText,
   HeaderText,
 } from "../controllers/TextController";
+import { foodFormat } from "../controllers/FormatController";
 import { normalize } from "../controllers/FontController";
 
 const CardNoImage = ({ title, description, price, category }) => {
@@ -12,12 +13,12 @@ const CardNoImage = ({ title, description, price, category }) => {
     <View>
       <View style={styles.menuCard}>
         <View style={styles.menuText}>
-          <DefaultText style={styles.title}>{title}</DefaultText>
+          <HeaderText style={styles.title}>{title}</HeaderText>
           {title.length < 34 && category !== "None" && (
             <DefaultText style={styles.category}>{category}</DefaultText>
           )}
           {description !== "None" && (
-            <SmallText style={styles.desc}>{description}</SmallText>
+            <SmallText style={styles.desc}>{foodFormat(description)}</SmallText>
           )}
           <DefaultText style={styles.price}>
             {price ? `${price}` : ""}

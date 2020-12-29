@@ -14,7 +14,7 @@ const RegularCard = ({ onPress, image, title, description, price, banner }) => {
         </View>
         <View style={styles.menuText}>
           <DefaultText style={styles.title}>{title}</DefaultText>
-          {description !== "None" && <SmallText>{description}</SmallText>}
+          {description !== "None" && <SmallText>hellloo</SmallText>}
 
           <DefaultText>{price ? `${price}` : ""}</DefaultText>
         </View>

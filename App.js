@@ -26,7 +26,7 @@ const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 const fetchFonts = () => {
   return Font.loadAsync({
     "roboto-regular": require("./assets/fonts/Montserrat-Regular.ttf"),
-    "roboto-bold": require("./assets/fonts/Montserrat-Bold.ttf"),
+    "roboto-bold": require("./assets/fonts/Montserrat-SemiBold.ttf"),
     "roboto-medium": require("./assets/fonts/Montserrat-Medium.ttf"),
   });
 };

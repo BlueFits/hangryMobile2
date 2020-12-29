@@ -32,9 +32,26 @@ export const addressFormat = (address) => {
   } else {
     address = address.substring(0, 34).concat("...");
   }
-
   return address.replace(
     /\w\S*/g,
     (text) => text.charAt(0).toUpperCase() + text.substr(1).toLowerCase()
   );
+};
+
+export const descriptionFormat = (description) => {
+  if (description.length <= 199) {
+  } else {
+    description = description.substring(0, 185).concat("...");
+  }
+
+  return description;
+};
+
+export const foodFormat = (item) => {
+  if (item.length <= 89) {
+  } else {
+    item = item.substring(0, 85).concat("...");
+  }
+
+  return item;
 };
