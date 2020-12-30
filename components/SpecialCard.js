@@ -76,11 +76,11 @@ const styles = StyleSheet.create({
   flag: {
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4,
-    width: 150,
+    width: normalize(130),
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#20649C",
-    padding: 3,
+    padding: normalize(3),
   },
   specialHeader: {
     width: "100%",
