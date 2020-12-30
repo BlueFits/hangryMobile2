@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground, Image } from 'react-native';
 import * as firebase from 'firebase';
 import { useDispatch } from 'react-redux';
 import { authenticate } from "../../store/actions/auth";
+
+
+
 
 export default Login = ({ navigation }) => {
 
@@ -17,49 +20,91 @@ export default Login = ({ navigation }) => {
             dispatch(authenticate());
         }).catch(error => {
             setErrorMessage(error.message)
-        });    
+        });
     }
 
     return (
-        <View style={StyleSheet.container}>
-                <Text style={styles.greeting}> {'Helleo again. \nWelcome back.'}</Text>
-                <View style={styles.errorMessage}>
-                    {errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
-                </View>
-                <View style={styles.form}>
-                    <View>
-                        <Text style={styles.inputTitle}> Email Address</Text>
-                        <TextInput style={styles.input} autoCapitalize="none" onChangeText={email => setEmail(email)} value={email}></TextInput>
-                    </View>
-                    <View style={{ marginTop: 32 }}>
-                        <Text style={styles.inputTitle}> Password </Text>
-                        <TextInput style={styles.input} secureTextEntry autoCapitalize="none" onChangeText={password => setPasssword(password)} value={password}></TextInput>
-                    </View>
-                </View>
 
-                <TouchableOpacity style={styles.button} onPress={handleLogin}>
-                    <Text style={{ color: "#FFF", fontWeight: "500" }}>Sign in</Text>
-                </TouchableOpacity>
+        <View style={styles.main}>
+            <ImageBackground
+                source={require('../../assets/images/HangryBlur.jpg')}
+                style={styles.image}>
 
-                <TouchableOpacity style={{ alignSelf: "center", marginTop: 32 }} onPress={() => navigation.navigate("Register")}>
-                    <Text style={{ color: "#414959", fontSize: 13 }}>
-                        New to Hangry? <Text style={{ fontWeight: "500", color: "#F55E2D" }}>Sign Up</Text>
-                    </Text>
-                </TouchableOpacity>
-            </View>
+                <Image source={require('../../assets/images/HangryLogo.png')} style={styles.logo} />
+
+                <View style={styles.container}>
+
+                    <Text style={styles.greeting}> {'Login'}</Text>
+                    <View style={styles.errorMessage}>
+                        {errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
+                    </View>
+                    <View style={styles.form}>
+                        <View>
+                            <Text style={styles.inputTitle}> Email Address</Text>
+                            <TextInput style={styles.input} autoCapitalize="none" onChangeText={email => setEmail(email)} value={email}></TextInput>
+                        </View>
+                        <View style={{ marginTop: 32 }}>
+                            <Text style={styles.inputTitle}> Password </Text>
+                            <TextInput style={styles.input} secureTextEntry autoCapitalize="none" onChangeText={password => setPasssword(password)} value={password}></TextInput>
+                        </View>
+                        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                            <Text style={{ color: "#FFF", fontWeight: "500" }}>LOGIN</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={{ alignSelf: "center", marginTop: 15, marginBottom: 10 }} onPress={() => navigation.navigate("Register")}>
+                            <Text style={{ color: "#414959", fontSize: 13 }}>
+                                New to Hangry? <Text style={{ fontWeight: "500", color: "#F55E2D" }}>Sign Up</Text>
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </ImageBackground>
+        </View>
+
+
+
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
+    main: {
         flex: 1,
+        flexDirection: "column",
+    },
+    image: {
+        height: '70%',
+        width: '100%'
+    },
+    logo: {
+        width: 205,
+        height: 45,
+        left: '25%',
+        top: '30%'
+
+    },
+    container: {
+
+        backgroundColor: '#fff',
+        margin: 50,
+        marginBottom: 200,
+        marginTop: 300,
+        borderWidth: 1,
+        borderColor: 'white',
+        borderRadius: 15,
+        shadowOffset: { width: 0, height: 2 },
+        shadowColor: 'black',
+        shadowOpacity: 0.3,
+
+
 
     },
     greeting: {
-        marginTop: 32,
+        marginTop: 40,
         fontSize: 18,
-        fontWeight: "400",
-        textAlign: "center"
+        fontWeight: "600",
+        textAlign: "center",
+        marginBottom: -25
+
     },
     errorMessage: {
         height: 72,
@@ -75,11 +120,12 @@ const styles = StyleSheet.create({
 
     },
     form: {
+
         marginBottom: 48,
         marginHorizontal: 30
     },
     inputTitle: {
-        color: "#8A8F9E",
+        color: "#F55E2D",
         fontSize: 10,
         textTransform: "uppercase"
     },
@@ -91,10 +137,11 @@ const styles = StyleSheet.create({
         color: "#161F3D"
     },
     button: {
-        marginHorizontal: 30,
+        marginTop: 30,
+        marginHorizontal: 50,
         backgroundColor: "#F55E2D",
-        borderRadius: 4,
-        height: 52,
+        borderRadius: 25,
+        height: 40,
         alignItems: "center",
         justifyContent: "center"
 
