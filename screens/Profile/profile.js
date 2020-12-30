@@ -40,6 +40,8 @@ const Profile = () => {
     return (
       <View style={styles.fillerStyles}>
         <ImageBackground source={HangryBackground} style={styles.image}>
+          <Image source={HangryLogo} style={styles.guestLogo} />
+
           <View style={styles.guestContainer}>
             <Image
               source={user}
@@ -75,6 +77,8 @@ const Profile = () => {
     return (
       <View style={styles.fillerStyles}>
         <ImageBackground source={HangryBackground} style={styles.image}>
+          <Image source={HangryLogo} style={styles.logo} />
+
           <View style={styles.container}>
             <Image
               source={user}
@@ -134,12 +138,6 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     aspectRatio: 10 / 8,
-  },
-  logo: {
-    width: "100%",
-    aspectRatio: 10 / 8,
-    position: "absolute",
-    top: "0",
   },
   guestContainer: {
     width: "80%",
@@ -211,6 +209,20 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  guestLogo: {
+    position: "absolute",
+    height: 45,
+    width: 205,
+    top: "25%",
+    left: "25%",
+  },
+  logo: {
+    position: "absolute",
+    height: 45,
+    width: 205,
+    top: "25%",
+    left: "25%",
   },
 });
 
