@@ -113,7 +113,7 @@ const MenuHeader = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   screen: {
-    height: 260,
+    height: normalize(200),
     paddingBottom: "8%",
     backgroundColor: "#FFF",
     display: "flex",
@@ -137,14 +137,14 @@ const styles = StyleSheet.create({
   },
   middleTextContainer: {
     alignItems: "center",
-    marginVertical: 10,
+    marginVertical: 20,
   },
   headerTop: {
     width: "100%",
     paddingTop: "10%",
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
   },
   followBttn: {
     height: 30,

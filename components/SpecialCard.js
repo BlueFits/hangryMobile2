@@ -30,11 +30,15 @@ const SpecialCard = ({
         <View style={styles.overlay} />
         <View style={styles.specialHeader}>
           <View style={styles.flag}>
-            <SmallText style={{ color: "#fff" }}>Featured Item</SmallText>
+            <SmallText style={{ color: "#fff", fontSize: normalize(11) }}>
+              Featured Item
+            </SmallText>
           </View>
         </View>
         <View style={styles.specialBottom}>
-          <HeaderText style={{ color: "#fff" }}>{title}</HeaderText>
+          <HeaderText style={{ color: "#fff", fontSize: normalize(18) }}>
+            {title}
+          </HeaderText>
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
@@ -59,11 +63,11 @@ const styles = StyleSheet.create({
   menuBg: {
     borderRadius: 8,
     overflow: "hidden",
-    height: 239,
+    height: normalize(150),
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: 10,
-    marginVertical: 7.5,
+    paddingVertical: normalize(8),
+    marginVertical: normalize(9),
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.2,
@@ -83,7 +87,7 @@ const styles = StyleSheet.create({
   },
   specialBottom: {
     width: "100%",
-    paddingHorizontal: 15,
+    paddingHorizontal: normalize(7),
   },
 });
 
