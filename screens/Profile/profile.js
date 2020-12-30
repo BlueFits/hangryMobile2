@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   Image,
+  ScrollView,
 } from "react-native";
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
@@ -37,94 +38,98 @@ const Profile = () => {
 
   if (!currentUser.email)
     return (
-      <View style={styles.fillerStyles}>
-        <ImageBackground source={HangryBackground} style={styles.image}>
-          <Image source={HangryLogo} style={styles.guestLogo} />
+      <ScrollView>
+        <View style={styles.fillerStyles}>
+          <ImageBackground source={HangryBackground} style={styles.image}>
+            <Image source={HangryLogo} style={styles.guestLogo} />
 
-          <View style={styles.guestContainer}>
-            <Image
-              source={user}
-              style={{
-                width: "50%",
-                height: "50%",
-                bottom: "12%",
-              }}
-            />
-            <HeaderText
-              style={{
-                fontSize: normalize(17),
-              }}
-            >
-              Hangry Guest
-            </HeaderText>
-          </View>
-          <TouchableOpacity style={styles.guestButton} onPress={handleLogout}>
-            <HeaderText
-              style={{
-                color: "#FFF",
-                fontSize: normalize(14),
-              }}
-            >
-              Sign Up
-            </HeaderText>
-          </TouchableOpacity>
-        </ImageBackground>
-      </View>
+            <View style={styles.guestContainer}>
+              <Image
+                source={user}
+                style={{
+                  width: "50%",
+                  height: "50%",
+                  bottom: "12%",
+                }}
+              />
+              <HeaderText
+                style={{
+                  fontSize: normalize(17),
+                }}
+              >
+                Hangry Guest
+              </HeaderText>
+            </View>
+            <TouchableOpacity style={styles.guestButton} onPress={handleLogout}>
+              <HeaderText
+                style={{
+                  color: "#FFF",
+                  fontSize: normalize(14),
+                }}
+              >
+                Sign Up
+              </HeaderText>
+            </TouchableOpacity>
+          </ImageBackground>
+        </View>
+      </ScrollView>
     );
 
   if (currentUser.email)
     return (
-      <View style={styles.fillerStyles}>
-        <ImageBackground source={HangryBackground} style={styles.image}>
-          <Image source={HangryLogo} style={styles.logo} />
+      <ScrollView>
+        <View style={styles.fillerStyles}>
+          <ImageBackground source={HangryBackground} style={styles.image}>
+            <Image source={HangryLogo} style={styles.logo} />
 
-          <View style={styles.container}>
-            <Image
-              source={user}
-              style={{
-                width: "60%",
-                height: "50%",
-                bottom: "10%",
-              }}
-            />
-            <HeaderText
-              style={{
-                fontSize: normalize(20),
-              }}
-            >
-              {TitleFormat(currentUser.displayName)}
-            </HeaderText>
-            <HeaderText
-              style={{
-                fontSize: normalize(14),
-                color: "#808080",
-                paddingTop: "4%",
-              }}
-            >
-              {currentUser.photoURL}
-            </HeaderText>
-            <HeaderText
-              style={{
-                fontSize: normalize(14),
-                color: "#808080",
-                paddingTop: "1%",
-              }}
-            >
-              {currentUser.email}
-            </HeaderText>
-          </View>
-          <TouchableOpacity style={styles.logout} onPress={handleLogout}>
-            <HeaderText
-              style={{
-                color: "#FFF",
-                fontSize: normalize(14),
-              }}
-            >
-              Log Out
-            </HeaderText>
-          </TouchableOpacity>
-        </ImageBackground>
-      </View>
+            <View style={styles.container}>
+              <Image
+                source={user}
+                style={{
+                  width: "60%",
+                  height: "50%",
+                  bottom: "10%",
+                }}
+              />
+              <HeaderText
+                style={{
+                  fontSize: normalize(20),
+                }}
+              >
+                {TitleFormat(currentUser.displayName)}
+              </HeaderText>
+              <HeaderText
+                style={{
+                  fontSize: normalize(14),
+                  color: "#808080",
+                  paddingTop: "4%",
+                }}
+              >
+                {currentUser.photoURL}
+              </HeaderText>
+              <HeaderText
+                style={{
+                  fontSize: normalize(14),
+                  color: "#808080",
+                  paddingTop: "1%",
+                }}
+              >
+                {currentUser.email}
+              </HeaderText>
+            </View>
+            <TouchableOpacity style={styles.logout} onPress={handleLogout}>
+              <HeaderText
+                style={{
+                  color: "#FFF",
+                  fontSize: normalize(14),
+                }}
+              >
+                Log Out
+              </HeaderText>
+            </TouchableOpacity>
+          </ImageBackground>
+        </View>
+      </ScrollView>
     );
 };
 

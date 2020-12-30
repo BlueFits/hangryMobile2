@@ -130,7 +130,7 @@ export default RegisterScreen = ({ navigation }) => {
         </View>
         <View
           style={{
-            marginBottom: "30%",
+            marginBottom: "45%",
           }}
         ></View>
       </ImageBackground>
@@ -148,8 +148,8 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   logo: {
-    width: 205,
-    height: 45,
+    width: normalize(170),
+    height: normalize(35),
     left: "25%",
     top: "20%",
   },
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   input: {
     borderBottomColor: "#8A8F9E",
     borderBottomWidth: StyleSheet.hairlineWidth,
-    height: 30,
+    height: normalize(20),
     fontSize: normalize(10),
     color: "#161F3D",
   },
@@ -201,10 +201,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: "96%",
     left: "10%",
-    marginHorizontal: 50,
+    marginHorizontal: normalize(30),
     backgroundColor: "#F55E2D",
     borderRadius: 25,
-    height: 40,
+    height: normalize(30),
     width: "50%",
     alignItems: "center",
     justifyContent: "center",

@@ -128,7 +128,7 @@ export default Login = ({ navigation }) => {
         </View>
         <View
           style={{
-            marginBottom: "20%",
+            marginBottom: "35%",
           }}
         ></View>
       </ImageBackground>
@@ -146,8 +146,8 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   logo: {
-    width: 205,
-    height: 45,
+    width: normalize(170),
+    height: normalize(35),
     left: "25%",
     top: "30%",
   },
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     height: "25%",
     alignItems: "center",
     justifyContent: "center",
-    marginHorizontal: 30,
+    marginHorizontal: normalize(30),
   },
   error: {
     color: "#E9446A",
@@ -192,27 +192,27 @@ const styles = StyleSheet.create({
   input: {
     borderBottomColor: "#8A8F9E",
     borderBottomWidth: StyleSheet.hairlineWidth,
-    height: 30,
+    height: normalize(25),
     fontSize: normalize(8),
     color: "#161F3D",
   },
   button: {
-    marginTop: 30,
-    marginHorizontal: 50,
+    marginTop: normalize(15),
+    marginHorizontal: normalize(30),
     top: "45%",
     backgroundColor: "#F55E2D",
     borderRadius: 25,
-    height: 40,
+    height: normalize(30),
     alignItems: "center",
     justifyContent: "center",
   },
   guestButton: {
-    marginTop: 30,
-    marginHorizontal: 40,
+    marginTop: normalize(20),
+    marginHorizontal: normalize(30),
     top: "5%",
     backgroundColor: "#F55E2D",
     borderRadius: 25,
-    height: 40,
+    height: normalize(30),
     alignItems: "center",
     justifyContent: "center",
   },
