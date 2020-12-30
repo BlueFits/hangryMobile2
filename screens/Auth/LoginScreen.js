@@ -7,10 +7,17 @@ import {
   TouchableOpacity,
   ImageBackground,
   Image,
+  ScrollView,
 } from "react-native";
 import * as firebase from "firebase";
 import { useDispatch } from "react-redux";
 import { authenticate } from "../../store/actions/auth";
+import {
+  DefaultText,
+  HeaderText,
+  SmallText,
+} from "../../controllers/TextController";
+import { normalize } from "../../controllers/FontController";
 
 export default Login = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -31,8 +38,22 @@ export default Login = ({ navigation }) => {
       });
   };
 
+  const guestLogin = () => {
+    firebase
+      .auth()
+      .signInAnonymously()
+      .then(() => {
+        dispatch(authenticate());
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
+  };
+
   return (
-    <View style={styles.main}>
+    <ScrollView style={styles.main}>
       <ImageBackground
         source={require("../../assets/images/HangryBackground.jpg")}
         style={styles.image}
@@ -43,13 +64,16 @@ export default Login = ({ navigation }) => {
         />
 
         <View style={styles.container}>
-          <Text style={styles.greeting}> {"Login"}</Text>
+          <HeaderText style={styles.greeting}> {"Login"}</HeaderText>
           <View style={styles.errorMessage}>
             {errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
           </View>
           <View style={styles.form}>
             <View>
-              <Text style={styles.inputTitle}> Email Address</Text>
+              <DefaultText style={styles.inputTitle}>
+                {" "}
+                Email Address
+              </DefaultText>
               <TextInput
                 style={styles.input}
                 autoCapitalize='none'
@@ -57,8 +81,8 @@ export default Login = ({ navigation }) => {
                 value={email}
               ></TextInput>
             </View>
-            <View style={{ marginTop: 32 }}>
-              <Text style={styles.inputTitle}> Password </Text>
+            <View style={{ marginTop: "10%" }}>
+              <DefaultText style={styles.inputTitle}> Password </DefaultText>
               <TextInput
                 style={styles.input}
                 secureTextEntry
@@ -68,24 +92,47 @@ export default Login = ({ navigation }) => {
               ></TextInput>
             </View>
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
-              <Text style={{ color: "#FFF", fontWeight: "500" }}>LOGIN</Text>
+              <HeaderText
+                style={{
+                  color: "#FFF",
+                  fontWeight: "500",
+                  fontSize: normalize(12),
+                }}
+              >
+                LOGIN
+              </HeaderText>
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={{ alignSelf: "center", marginTop: 15, marginBottom: 10 }}
+              style={{ alignSelf: "center", marginBottom: "10%" }}
               onPress={() => navigation.navigate("Register")}
             >
-              <Text style={{ color: "#414959", fontSize: 13 }}>
+              <DefaultText
+                style={{ color: "#414959", fontSize: normalize(10) }}
+              >
                 New to Hangry?{" "}
-                <Text style={{ fontWeight: "500", color: "#F55E2D" }}>
-                  Sign Up
-                </Text>
-              </Text>
+                <DefaultText style={{ color: "#F55E2D" }}>Sign Up</DefaultText>
+              </DefaultText>
             </TouchableOpacity>
           </View>
+          <TouchableOpacity style={styles.guestButton} onPress={guestLogin}>
+            <HeaderText
+              style={{
+                color: "#FFF",
+                fontSize: normalize(12),
+              }}
+            >
+              CONTINUE AS GUEST
+            </HeaderText>
+          </TouchableOpacity>
         </View>
+        <View
+          style={{
+            marginBottom: "20%",
+          }}
+        ></View>
       </ImageBackground>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -106,9 +153,9 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: "#fff",
-    margin: 50,
-    marginBottom: 200,
-    marginTop: 300,
+    margin: "10%",
+    marginBottom: "20%",
+    marginTop: "70%",
     borderWidth: 1,
     borderColor: "white",
     borderRadius: 15,
@@ -117,43 +164,52 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
   },
   greeting: {
-    marginTop: 40,
-    fontSize: 18,
-    fontWeight: "600",
+    marginTop: "8%",
+    fontSize: normalize(16),
     textAlign: "center",
-    marginBottom: -25,
+    marginBottom: "-10%",
   },
   errorMessage: {
-    height: 72,
+    height: "25%",
     alignItems: "center",
     justifyContent: "center",
     marginHorizontal: 30,
   },
   error: {
     color: "#E9446A",
-    fontSize: 13,
-    fontWeight: "600",
+    fontSize: normalize(10),
     textAlign: "center",
   },
   form: {
-    marginBottom: 48,
-    marginHorizontal: 30,
+    marginBottom: "20%",
+    marginHorizontal: "10%",
   },
   inputTitle: {
     color: "#F55E2D",
-    fontSize: 10,
+    fontSize: normalize(8),
     textTransform: "uppercase",
   },
   input: {
     borderBottomColor: "#8A8F9E",
     borderBottomWidth: StyleSheet.hairlineWidth,
-    height: 40,
-    fontSize: 15,
+    height: 30,
+    fontSize: normalize(8),
     color: "#161F3D",
   },
   button: {
     marginTop: 30,
     marginHorizontal: 50,
+    top: "45%",
+    backgroundColor: "#F55E2D",
+    borderRadius: 25,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  guestButton: {
+    marginTop: 30,
+    marginHorizontal: 40,
+    top: "5%",
     backgroundColor: "#F55E2D",
     borderRadius: 25,
     height: 40,

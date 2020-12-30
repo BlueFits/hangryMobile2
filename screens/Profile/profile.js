@@ -14,8 +14,7 @@ import { EachWordUppercase } from "../../controllers/FormatController";
 import HangryBackground from "../../assets/images/HangryBackground.jpg";
 import HangryLogo from "../../assets/images/HangryLogo.png";
 import user from "../../assets/images/user.jpg";
-import { TitleFormat, addressFormat } from "../../controllers/FormatController";
-import Svg, { SvgProps, Path } from "react-native-svg";
+import { TitleFormat } from "../../controllers/FormatController";
 
 import {
   DefaultText,

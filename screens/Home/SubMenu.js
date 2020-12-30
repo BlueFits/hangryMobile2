@@ -73,7 +73,7 @@ const SubMenu = ({ navigation, route }) => {
       <View style={styles.subMenu}>
         {restaurants.length === 0 ? (
           <View style={{ paddingVertical: 20 }}>
-            <DefaultText>No restaurants found</DefaultText>
+            <DefaultText>Loading...</DefaultText>
           </View>
         ) : (
           renderCards()
