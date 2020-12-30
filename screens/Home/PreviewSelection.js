@@ -25,7 +25,7 @@ const PreviewSelection = ({ route }) => {
           </HeaderText>
           {route.params.shortDescription !== "none" && (
             <DefaultText style={{ color: "#fff" }}>
-              {route.params.shortDescription}
+              {TitleFormat(route.params.shortDescription)}
             </DefaultText>
           )}
         </LinearGradient>
