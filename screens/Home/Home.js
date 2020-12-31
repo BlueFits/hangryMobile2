@@ -130,7 +130,10 @@ const itemMargin = 20;
 
 const styles = StyleSheet.create({
     screen: {
+        flexDirection: "row",
+        flexWrap: "wrap",
         alignItems: "center",
+        justifyContent: "space-between",
         paddingHorizontal: 15,
         flex: 1,
     },
@@ -151,8 +154,10 @@ const styles = StyleSheet.create({
     overlay,
     mealColoumn: {
         height: 200,
-        width: "100%",
+        width: "47%",
         marginBottom: itemMargin,
+        borderRadius: 10,
+        overflow: "hidden",
     },
     menuBg: { 
         width: "100%", 

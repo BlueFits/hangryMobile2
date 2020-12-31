@@ -1,4 +1,5 @@
 import React from "react";
+import { View, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { CardStyleInterpolators } from "@react-navigation/stack";
 
@@ -15,6 +16,7 @@ import Menu from "../toptabs/MenuTopTab";
 
 //Components
 import MenuHeader from "../../components/MenuHeader";
+import HangryStaticHeader from "../../components/HangryStaticHeader";
 
 ///Init
 const Stack = createStackNavigator();
@@ -22,18 +24,16 @@ const Stack = createStackNavigator();
 const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={defaultOptions}>
-      <Stack.Screen name='Home' component={Home} options={screenOptions} />
+      <Stack.Screen name='Home' component={Home} options={{ ...screenOptions, header: () => <HangryStaticHeader />}} />
       <Stack.Screen
         name='SubMenu'
         component={SubMenu}
         options={{
           ...screenOptions,
-          ...{
             cardStyle: {
               backgroundColor: "#F4F4F4",
             },
-            //cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-          },
+            // cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}
       />
       <Stack.Screen
