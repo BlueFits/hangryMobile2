@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard, TouchableOpacity, ScrollView, Button} from "react-native";
+import { View, StyleSheet, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard, TouchableOpacity, ScrollView, Image} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import * as firebase from 'firebase';
 import { clearRestaurants } from "../../store/actions/restaurants"
 
+//Images
+import background from "../../assets/images/HangryBackground.jpg";
+import logo from "../../assets/images/HangryLogo.png";
 
 //Action Redux
 import { filterCategory } from "../../store/actions/restaurants"
@@ -14,6 +17,7 @@ import { overlay } from "../../constants/StyleConstants";
 
 //CONTROLLERS
 import { HeaderText } from "../../controllers/TextController";
+import { Header } from "react-native/Libraries/NewAppScreen";
 
 
 const Home = ({ navigation }) => {
@@ -53,7 +57,13 @@ const Home = ({ navigation }) => {
 
     return (
         <ScrollView>
-            <TouchableWithoutFeedback touchSoundDisabled={true} onPress={() => Keyboard.dismiss()}>
+            <View>
+                <View style={{ width: "100%", height: 100, marginBottom: 10 }}>
+                    <ImageBackground style={{ width: "100%", height: "100%",  alignItems: "center", justifyContent: "center" }} source={background}>
+                        <Image source={logo} resizeMode="contain" style={{ height: 25 }} />
+                    </ImageBackground>
+                </View>
+                <TouchableWithoutFeedback touchSoundDisabled={true} onPress={() => Keyboard.dismiss()}>
                 <View style={styles.screen}>
                     {/* <View style={styles.searchContainer}>
                         <Ionicons name="ios-search" size={24} color="black" />
@@ -122,6 +132,7 @@ const Home = ({ navigation }) => {
 
                 </View>
             </TouchableWithoutFeedback>
+            </View>
         </ScrollView>
     );
 };

@@ -24,7 +24,7 @@ const Stack = createStackNavigator();
 const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={defaultOptions}>
-      <Stack.Screen name='Home' component={Home} options={{ ...screenOptions, header: () => <HangryStaticHeader />}} />
+      <Stack.Screen name='Home' component={Home} options={{ ...screenOptions, header: () => <View></View>}} />
       <Stack.Screen
         name='SubMenu'
         component={SubMenu}

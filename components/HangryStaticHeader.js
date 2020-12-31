@@ -10,7 +10,7 @@ import logo from "../assets/images/HangryLogo.png";
 const HangryStaticHeader = () => {
     return (
         <View style={styles.headerContainer}>
-            <ImageBackground style={{ width: "100%", height: "100%", justifyContent: "center", alignItems: "center" }} source={background}>
+            <ImageBackground style={{ width: "100%", height: "100%", justifyContent: "center", alignItems: "center"}} source={background}>
                 <View>
                     <Image source={logo} style={{ height: 25 }} resizeMode="contain" />
                 </View>  
@@ -21,7 +21,7 @@ const HangryStaticHeader = () => {
 
 const styles = StyleSheet.create({
     headerContainer: {
-        height: 100,
+        height: 0,
     },
 });
 
