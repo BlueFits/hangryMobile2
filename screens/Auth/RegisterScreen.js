@@ -122,7 +122,9 @@ export default RegisterScreen = ({ navigation }) => {
           >
             <DefaultText style={{ color: "#414959", fontSize: normalize(10) }}>
               Already have an account?{" "}
-              <DefaultText style={{ fontWeight: "500", color: "#F55E2D" }}>
+              <DefaultText
+                style={{ color: "#F55E2D", fontSize: normalize(11) }}
+              >
                 Login
               </DefaultText>
             </DefaultText>

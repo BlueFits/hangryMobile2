@@ -96,7 +96,7 @@ const Profile = () => {
                   fontSize: normalize(20),
                 }}
               >
-                {TitleFormat(currentUser.displayName)}
+                {currentUser.displayName}
               </HeaderText>
               <HeaderText
                 style={{

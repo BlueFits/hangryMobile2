@@ -111,7 +111,11 @@ export default Login = ({ navigation }) => {
                 style={{ color: "#414959", fontSize: normalize(10) }}
               >
                 New to Hangry?{" "}
-                <DefaultText style={{ color: "#F55E2D" }}>Sign Up</DefaultText>
+                <DefaultText
+                  style={{ color: "#F55E2D", fontSize: normalize(11) }}
+                >
+                  Sign Up
+                </DefaultText>
               </DefaultText>
             </TouchableOpacity>
           </View>
