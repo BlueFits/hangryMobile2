@@ -15,7 +15,10 @@ import { EachWordUppercase } from "../../controllers/FormatController";
 import HangryBackground from "../../assets/images/HangryBackground.jpg";
 import HangryLogo from "../../assets/images/HangryLogo.png";
 import user from "../../assets/images/user.jpg";
-import { TitleFormat } from "../../controllers/FormatController";
+import {
+  TitleFormat,
+  formatPhoneNumber,
+} from "../../controllers/FormatController";
 
 import {
   DefaultText,
@@ -96,7 +99,7 @@ const Profile = () => {
                   fontSize: normalize(20),
                 }}
               >
-                {currentUser.displayName}
+                {TitleFormat(currentUser.displayName)}
               </HeaderText>
               <HeaderText
                 style={{
@@ -105,7 +108,7 @@ const Profile = () => {
                   paddingTop: "4%",
                 }}
               >
-                {currentUser.photoURL}
+                {formatPhoneNumber(currentUser.photoURL)}
               </HeaderText>
               <HeaderText
                 style={{

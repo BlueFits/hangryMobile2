@@ -35,8 +35,8 @@ export default RegisterScreen = ({ navigation }) => {
       .then((userCredentials) => {
         userCredentials.user
           .updateProfile({
-            displayname: name,
-            phoneNum: phoneNum,
+            displayName: name,
+            photoURL: phoneNum,
           })
           .then(() => {
             dispatch(authenticate());
