@@ -1,10 +1,11 @@
 import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { useDispatch, useSelector } from "react-redux";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 //Actions Redux
 import { switchCategory } from "../../store/actions/restaurants";
+import { normalize } from "../../controllers/FontController";
 
 const Tab = createMaterialTopTabNavigator();
 

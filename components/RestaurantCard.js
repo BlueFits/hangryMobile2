@@ -59,8 +59,8 @@ const RestaurantCard = ({
 
 const styles = StyleSheet.create({
   menuCard: {
-    marginVertical: 15,
-    height: 250,
+    marginVertical: normalize(15),
+    height: normalize(190),
     width: "100%",
     display: "flex",
     flexDirection: "row",
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
   menuText: {
     flex: 3,
-    paddingLeft: 15,
+    paddingLeft: normalize(15),
     justifyContent: "space-around",
   },
   title: {

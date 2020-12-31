@@ -6,6 +6,7 @@ import {
   HeaderText,
 } from "../controllers/TextController";
 import { normalize } from "../controllers/FontController";
+
 const RegularCard = ({ onPress, image, title, description, price, banner }) => {
   return (
     <TouchableOpacity onPress={onPress}>
@@ -34,21 +35,17 @@ const RegularCard = ({ onPress, image, title, description, price, banner }) => {
 const styles = StyleSheet.create({
   menuCard: {
     marginVertical: 10,
-    height: 150,
     width: "100%",
+    aspectRatio: 10 / 4,
     flexDirection: "row",
-    padding: 10,
+    padding: normalize(8),
     backgroundColor: "#fff",
     borderRadius: 10,
     elevation: 5,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
   },
   menuText: {
     flex: 3,
-    paddingLeft: 15,
+    paddingLeft: normalize(10),
     justifyContent: "space-around",
   },
   title: {
@@ -56,8 +53,7 @@ const styles = StyleSheet.create({
     top: "5%",
     left: "4%",
     fontSize: normalize(14),
-
-    paddingBottom: 10,
+    paddingBottom: normalize(10),
     color: "#000",
   },
   price: {

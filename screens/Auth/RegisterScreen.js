@@ -7,10 +7,17 @@ import {
   TouchableOpacity,
   ImageBackground,
   Image,
+  ScrollView,
 } from "react-native";
 import * as firebase from "firebase";
 import { useDispatch } from "react-redux";
 import { authenticate } from "../../store/actions/auth";
+import {
+  DefaultText,
+  HeaderText,
+  SmallText,
+} from "../../controllers/TextController";
+import { normalize } from "../../controllers/FontController";
 
 export default RegisterScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -28,8 +35,8 @@ export default RegisterScreen = ({ navigation }) => {
       .then((userCredentials) => {
         userCredentials.user
           .updateProfile({
-            displayname: name,
-            phoneNum: phoneNum,
+            displayName: name,
+            photoURL: phoneNum,
           })
           .then(() => {
             dispatch(authenticate());
@@ -40,7 +47,7 @@ export default RegisterScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.main}>
+    <ScrollView style={styles.main}>
       <ImageBackground
         source={require("../../assets/images/HangryBackground.jpg")}
         style={styles.image}
@@ -50,14 +57,16 @@ export default RegisterScreen = ({ navigation }) => {
           style={styles.logo}
         />
         <View style={styles.container}>
-          <Text style={styles.greeting}> {"Sign Up"}</Text>
+          <HeaderText style={styles.greeting}> {"Sign Up"}</HeaderText>
 
           <View style={styles.errorMessage}>
-            {errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
+            {errorMessage && (
+              <DefaultText style={styles.error}>{errorMessage}</DefaultText>
+            )}
           </View>
           <View style={styles.form}>
             <View>
-              <Text style={styles.inputTitle}> Full name</Text>
+              <DefaultText style={styles.inputTitle}> Full name</DefaultText>
               <TextInput
                 style={styles.input}
                 autoCapitalize='none'
@@ -65,8 +74,8 @@ export default RegisterScreen = ({ navigation }) => {
                 value={name}
               ></TextInput>
             </View>
-            <View style={{ marginTop: 32 }}>
-              <Text style={styles.inputTitle}> Phone Number</Text>
+            <View style={{ marginTop: "15%" }}>
+              <DefaultText style={styles.inputTitle}> Phone Number</DefaultText>
               <TextInput
                 style={styles.input}
                 autoCapitalize='none'
@@ -74,8 +83,11 @@ export default RegisterScreen = ({ navigation }) => {
                 value={phoneNum}
               ></TextInput>
             </View>
-            <View style={{ marginTop: 32 }}>
-              <Text style={styles.inputTitle}> Email Address</Text>
+            <View style={{ marginTop: "15%" }}>
+              <DefaultText style={styles.inputTitle}>
+                {" "}
+                Email Address
+              </DefaultText>
               <TextInput
                 style={styles.input}
                 autoCapitalize='none'
@@ -83,8 +95,8 @@ export default RegisterScreen = ({ navigation }) => {
                 value={email}
               ></TextInput>
             </View>
-            <View style={{ marginTop: 32 }}>
-              <Text style={styles.inputTitle}> Password </Text>
+            <View style={{ marginTop: "15%" }}>
+              <DefaultText style={styles.inputTitle}> Password </DefaultText>
               <TextInput
                 style={styles.input}
                 secureTextEntry
@@ -99,21 +111,32 @@ export default RegisterScreen = ({ navigation }) => {
             style={styles.button}
             onPress={() => handleSignUp()}
           >
-            <Text style={{ color: "#FFF", fontWeight: "500" }}>Sign up</Text>
+            <HeaderText style={{ color: "#FFF", fontSize: normalize(12) }}>
+              SIGN UP
+            </HeaderText>
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={{ alignSelf: "center", marginTop: 15, marginBottom: 50 }}
+            style={{ alignSelf: "center", marginBottom: "30%" }}
             onPress={() => navigation.navigate("Login")}
           >
-            <Text style={{ color: "#414959", fontSize: 13 }}>
+            <DefaultText style={{ color: "#414959", fontSize: normalize(10) }}>
               Already have an account?{" "}
-              <Text style={{ fontWeight: "500", color: "#F55E2D" }}>Login</Text>
-            </Text>
+              <DefaultText
+                style={{ color: "#F55E2D", fontSize: normalize(11) }}
+              >
+                Login
+              </DefaultText>
+            </DefaultText>
           </TouchableOpacity>
         </View>
+        <View
+          style={{
+            marginBottom: "45%",
+          }}
+        ></View>
       </ImageBackground>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -123,20 +146,20 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   image: {
-    height: "70%",
+    height: "60%",
     width: "100%",
   },
   logo: {
-    width: 205,
-    height: 45,
+    width: normalize(170),
+    height: normalize(35),
     left: "25%",
-    top: "30%",
+    top: "20%",
   },
   container: {
     backgroundColor: "#fff",
-    margin: 50,
-    marginBottom: 200,
-    marginTop: 250,
+    margin: "10%",
+    marginBottom: "20%",
+    marginTop: "40%",
     borderWidth: 1,
     borderColor: "white",
     borderRadius: 15,
@@ -145,47 +168,50 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
   },
   greeting: {
-    marginTop: 40,
-    fontSize: 18,
-    fontWeight: "600",
+    marginTop: "8%",
+    fontSize: normalize(16),
     textAlign: "center",
-    marginBottom: -25,
+    marginBottom: "-10%",
   },
   errorMessage: {
-    height: 72,
+    height: "18%",
     alignItems: "center",
     justifyContent: "center",
-    marginHorizontal: 30,
   },
   error: {
     color: "#E9446A",
-    fontSize: 13,
-    fontWeight: "600",
+    fontSize: normalize(10),
     textAlign: "center",
   },
   form: {
-    marginBottom: 48,
-    marginHorizontal: 30,
+    marginBottom: "20%",
+    marginHorizontal: "10%",
   },
   inputTitle: {
     color: "#F55E2D",
-    fontSize: 10,
+    fontSize: normalize(8),
     textTransform: "uppercase",
   },
   input: {
     borderBottomColor: "#8A8F9E",
     borderBottomWidth: StyleSheet.hairlineWidth,
-    height: 25,
-    fontSize: 15,
+    height: normalize(20),
+    fontSize: normalize(10),
     color: "#161F3D",
   },
   button: {
-    marginTop: -30,
-    marginHorizontal: 50,
+    position: "absolute",
+    top: "96%",
+    left: "10%",
+    marginHorizontal: normalize(30),
     backgroundColor: "#F55E2D",
     borderRadius: 25,
-    height: 40,
+    height: normalize(30),
+    width: "50%",
     alignItems: "center",
     justifyContent: "center",
+    shadowOffset: { width: 0, height: 2 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
   },
 });
