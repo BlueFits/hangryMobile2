@@ -1,6 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { CardStyleInterpolators } from "@react-navigation/stack";
+import { View, Text } from "react-native";
 
 //Screens
 import Home from "../../screens/Home/Home";
@@ -8,6 +9,7 @@ import SubMenu from "../../screens/Home/SubMenu";
 import restaurantMenu from "../../screens/Home/RestaurantMenu";
 import Selection from "../../screens/Home/PreviewSelection";
 import previewSelection from "../../screens/Home/PreviewSelection";
+import HangryStaticHeader from "../../components/HangryStaticHeader";
 
 //Top Tabs
 import Menu from "../toptabs/MenuTopTab";
@@ -21,7 +23,11 @@ const Stack = createStackNavigator();
 const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={defaultOptions}>
-      <Stack.Screen name='Home' component={Home} options={screenOptions} />
+      <Stack.Screen
+        name='Home'
+        component={Home}
+        options={{ ...screenOptions, header: () => <View></View> }}
+      />
       <Stack.Screen
         name='SubMenu'
         component={SubMenu}
