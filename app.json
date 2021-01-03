@@ -16,7 +16,10 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.group.hangry"
+      "bundleIdentifier": "com.group.hangry",
+      "infoPlist": {
+        "NSCameraUsageDescription": "HangryMobile uses your camera to scan restaurant QR codes and view menu items"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
